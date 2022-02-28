@@ -15,29 +15,24 @@
  *
  */
 
+// Exit if accessed directly
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
     class PS_Zendesk_Chat_Widget_Via_Api {
         
         public function __construct() {
             
-            // Plugin version
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_VER', '1.1.1' );
-            
-            // Plugin name
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_NAME', 'Zendesk Chat Widget via API' );
-            
-            // Plugin path
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_DIR', plugin_dir_path( __FILE__ ) );
-            
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-            
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_DOCUMENTATION_URL', 'https://www.pluginsandsnippets.com/' );
-            
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_OPEN_TICKET_URL', 'https://www.pluginsandsnippets.com/open-ticket/' );
-            
-            
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_REVIEW_URL', 'https://wordpress.org/plugins/zendesk-chat-widget-via-api/reviews/#new-post' );
-            
             
             add_action( 'admin_menu', array(
                 $this,
@@ -98,7 +93,6 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         }
         
         public function create_options_menu() {
-            
             add_submenu_page( 'options-general.php', __( 'Zendesk Chat Settings', 'ps-zendesk-chat-widget-via-api' ), __( 'Zendesk Chat Settings', 'ps-zendesk-chat-widget-via-api' ), 'manage_options', 'ps-zendesk-chat-widget-via-api', array(
                 $this,
                 'options_page' 
@@ -200,6 +194,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             global $current_user;
             wp_get_current_user();
             $user_n = '';
+            
             if ( !empty( $current_user->display_name ) ) {
                 $user_n = " " . $current_user->display_name;
             }
@@ -259,6 +254,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             if ( 'plugins.php' !== $pagenow ) {
                 return;
             }
+
             include PS_ZENDESK_CHAT_WIDGET_VIA_API_DIR . 'includes/deactivation-form.php';
         }
         
@@ -317,6 +313,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             
             $to      = 'info@pluginsandsnippets.com';
             $subject = 'Plugin Uninstallation';
+            
             $body    = '<p>Plugin Name: ' . PS_ZENDESK_CHAT_WIDGET_VIA_API_NAME . '</p>';
             $body   .= '<p>Plugin Version: ' . PS_ZENDESK_CHAT_WIDGET_VIA_API_VER . '</p>';
             $body   .= '<p>Reason: ' . $reason_text . '</p>';
@@ -327,6 +324,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             $body   .= '<p>Website Language: ' . get_bloginfo( 'language' ) . '</p>';
             $body   .= '<p>Wordpress Version: ' . get_bloginfo( 'version' ) . '</p>';
             $body   .= '<p>PHP Version: ' . PHP_VERSION . '</p>';
+            
             $headers = array(
                 'Content-Type: text/html; charset=UTF-8' 
             );
@@ -346,16 +344,14 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             static $this_plugin;
             
             if ( empty( $this_plugin ) ) {
-                
                 $this_plugin = 'zendesk-chat-widget-via-api/zendesk-chat-widget-via-api.php';
             }
             
             if ( $file == $this_plugin ) {
-                
                 $settings_link = sprintf( esc_html__( '%1$s Settings %2$s', 'ps-zendesk-chat-widget-via-api' ), '<a href="' . admin_url( 'options-general.php?page=ps-zendesk-chat-widget-via-api' ) . '">', '</a>' );
                 
                 array_unshift( $links, $settings_link );
-                
+
             }
             
             return $links;
