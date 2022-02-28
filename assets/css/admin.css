@@ -1,0 +1,131 @@
+.ps-zendesk-chat-hidden {
+    overflow: hidden;
+}
+.ps-zendesk-chat-popup-overlay .ps-zendesk-chat-internal-message {
+    margin: 3px 0 3px 22px;
+    display: none;
+}
+.ps-zendesk-chat-reason-input {
+    margin: 3px 0 3px 22px;
+    display: none;
+}
+.ps-zendesk-chat-reason-input input[type="text"] {
+    width: 100%;
+    display: block;
+}
+.ps-zendesk-chat-popup-overlay {
+    background: rgba(0, 0, 0, .8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+    overflow: auto;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ps-zendesk-chat-popup-overlay.ps-zendesk-chat-active {
+    opacity: 1;
+    visibility: visible;
+}
+.ps-zendesk-chat-serveypanel {
+    width: 600px;
+    background: #fff;
+    margin: 0 auto 0;
+    border-radius: 3px;
+}
+.ps-zendesk-chat-popup-header {
+    background: #f1f1f1;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.ps-zendesk-chat-popup-header h2 {
+    margin: 0;
+    text-transform: uppercase;
+}
+.ps-zendesk-chat-popup-body {
+    padding: 10px 20px;
+}
+.ps-zendesk-chat-popup-footer {
+    background: #f9f3f3;
+    padding: 10px 20px;
+    border-top: 1px solid #ccc;
+}
+.ps-zendesk-chat-popup-footer:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.action-btns {
+    float: right;
+}
+.ps-zendesk-chat-anonymous {
+    display: none;
+}
+.attention, .error-message {
+    color: red;
+    font-weight: 600;
+    display: none;
+}
+.ps-zendesk-chat-spinner {
+    display: none;
+}
+.ps-zendesk-chat-spinner img {
+    margin-top: 3px;
+}
+.ps-zendesk-chat-pro-message {
+    padding-left: 24px;
+    color: red;
+    font-weight: 600;
+    display: none;
+}
+.ps-zendesk-chat-popup-header {
+    background: none;
+    padding: 18px 15px;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 8px rgba(0, 0, 0, .1);
+    border: 0;
+}
+.ps-zendesk-chat-popup-body h3 {
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #495157;
+    line-height: 1.4;
+    text-tranform: uppercase;
+}
+.ps-zendesk-chat-reason {
+    font-size: 13px;
+    color: #6d7882;
+    margin-bottom: 15px;
+}
+.ps-zendesk-chat-reason input[type="radio"] {
+    margin-right: 15px;
+}
+.ps-zendesk-chat-popup-body {
+    padding: 30px 30px 0;
+}
+.ps-zendesk-chat-popup-footer {
+    background: none;
+    border: 0;
+    padding: 29px 39px 39px;
+}
+.ps-zendesk-chat-widget-via-api-field label {
+    display: block;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+.ps-zendesk-chat-widget-via-api-field input {
+    width: 100%;
+}
+.ps-zendesk-chat-widget-via-api-field {
+    max-width: 600px;
+    padding-right: 10px;
+    margin: 0 0 10px;
+}
