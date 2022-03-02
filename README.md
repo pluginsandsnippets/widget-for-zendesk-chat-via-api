@@ -7,7 +7,7 @@
 
 
 - Company: [Plugins & Snippets](https://www.pluginsandsnippets.com/)
-- Author: [Dilip Sakariya](https://github.com/dilipsakariya)
+- Author: [Dilip Sakariya](https://github.com/dilipsakariya), [Ahmed Siawa Owais](https://github.com/siawaahmed)
 - Tags: zendesk chat, zendesk chat widget, chat widget, wordpress, wordpress plugin
 
 
@@ -31,3 +31,5 @@ This plugin also provides a Zendesk Chat Settings Page located on your WordPress
 
 ![App Screenshot](https://www.pluginsandsnippets.com/wp-content/uploads/2022/03/Zendesk-Chat-Settings.jpg)
 
+Please also check out our other WordPress Plugins.
+https://www.pluginsandsnippets.com/
