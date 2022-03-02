@@ -31,5 +31,5 @@ This plugin also provides a Zendesk Chat Settings Page located on your WordPress
 
 ![App Screenshot](https://www.pluginsandsnippets.com/wp-content/uploads/2022/03/Zendesk-Chat-Settings.jpg)
 
-Please also check out our other WordPress Plugins.
-https://www.pluginsandsnippets.com/
+Please also check out our other WordPress Plugins. <br>
+www.pluginsandsnippets.com
