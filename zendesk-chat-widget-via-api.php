@@ -1,9 +1,9 @@
 <?php
 /**
  * Plugin Name:       Zendesk Chat Widget via API
- * Plugin URI:        https://www.pluginsandsnippets.com/
+ * Plugin URI:        https://wordpress.org/plugins/zendesk-chat-widget-via-api/
  * Description:       This plugin loads Zendesk Chat widget (formerly Zopim chat) via API with a slight time delay. This improves the page loading speed of your website compared to the standard Zendesk Chat plugin. Make your website faster loading Zendesk Chat widget this way!
- * Version:           1.1.1
+ * Version:           1.2
  * Author:            Plugins & Snippets
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       zendesk-chat-widget-via-api
@@ -26,11 +26,11 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function __construct() {
             
-            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_VER', '1.1.1' );
+            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_VER', '1.2' );
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_NAME', 'Zendesk Chat Widget via API' );
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_DIR', plugin_dir_path( __FILE__ ) );
-            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_DOCUMENTATION_URL', 'https://www.pluginsandsnippets.com/' );
+            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_PLUGIN_URL', 'https://wordpress.org/plugins/zendesk-chat-widget-via-api/' );
+            define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_DOCUMENTATION_URL', 'https://wordpress.org/plugins/zendesk-chat-widget-via-api/' );
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_OPEN_TICKET_URL', 'https://www.pluginsandsnippets.com/open-ticket/' );
             define( 'PS_ZENDESK_CHAT_WIDGET_VIA_API_REVIEW_URL', 'https://wordpress.org/plugins/zendesk-chat-widget-via-api/reviews/#new-post' );
             
