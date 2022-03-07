@@ -3,7 +3,7 @@
 Author URI: https://www.pluginsandsnippets.com
 Plugin URI: https://wordpress.org/plugins/zendesk-chat-widget-via-api/
 Contributors: pluginsandsnippets, dilipsakariya, siawaahmed
-Tags: zendesk chat, zoopim chat
+Tags: zendesk, chat, zoopim, zendesk, api, widget, speed, speed optimization
 Requires at least: 3.5
 Tested up to: 5.9.1
 Requires PHP: 5.6
