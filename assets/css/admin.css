@@ -116,15 +116,15 @@
     border: 0;
     padding: 29px 39px 39px;
 }
-.ps-zendesk-chat-widget-via-api-field label {
+.ps-widget-for-zendesk-chat-via-api-field label {
     display: block;
     font-weight: 600;
     margin: 0 0 10px;
 }
-.ps-zendesk-chat-widget-via-api-field input {
+.ps-widget-for-zendesk-chat-via-api-field input {
     width: 100%;
 }
-.ps-zendesk-chat-widget-via-api-field {
+.ps-widget-for-zendesk-chat-via-api-field {
     max-width: 600px;
     padding-right: 10px;
     margin: 0 0 10px;

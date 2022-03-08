@@ -1,7 +1,7 @@
 (function($) {
     
     $(function() {
-        var pluginSlug = 'zendesk-chat-widget-via-api';
+        var pluginSlug = 'widget-for-zendesk-chat-via-api';
         // Code to fire when the DOM is ready.
         $(document).on('click', 'tr[data-slug="' + pluginSlug + '"] .deactivate', function(e) {
             e.preventDefault();
@@ -49,7 +49,7 @@
             
             var _reason = $('input[type="radio"][name="ps-zendesk-chat-selected-reason"]:checked').val();
             var _reason_details = '';
-            var deactivate_nonce = $('.ps_zendesk_chat_widget_via_api_deactivation_nonce').val();
+            var deactivate_nonce = $('.ps_widget_for_zendesk_chat_via_api_deactivation_nonce').val();
             
             if (_reason == 2) {
                 _reason_details = $(this).find("input[type='text'][name='better_plugin']").val();
@@ -66,10 +66,10 @@
                 url: ajaxurl,
                 type: 'POST',
                 data: {
-                    action: 'ps_zendesk_chat_widget_via_api_deactivation',
+                    action: 'ps_widget_for_zendesk_chat_via_api_deactivation',
                     reason: _reason,
                     reason_detail: _reason_details,
-                    ps_zendesk_chat_widget_via_api_deactivation_nonce: deactivate_nonce
+                    ps_widget_for_zendesk_chat_via_api_deactivation_nonce: deactivate_nonce
                 },
                 beforeSend: function() {
                     $(".ps-zendesk-chat-spinner").show();

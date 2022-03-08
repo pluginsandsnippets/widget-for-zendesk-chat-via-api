@@ -1,5 +1,5 @@
 
-# Zendesk Chat Widget via API
+# Widget for Zendesk Chat via API
 
 
 

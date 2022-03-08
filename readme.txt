@@ -1,7 +1,7 @@
-=== Zendesk Chat Widget via API ===
+=== Widget for Zendesk Chat via API ===
 
 Author URI: https://www.pluginsandsnippets.com
-Plugin URI: https://wordpress.org/plugins/zendesk-chat-widget-via-api/
+Plugin URI: https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/
 Contributors: pluginsandsnippets, dilipsakariya, siawaahmed
 Tags: zendesk, chat, zoopim, zendesk, api, widget, speed, speed optimization
 Requires at least: 3.5
@@ -26,7 +26,7 @@ This process follows two criteria:
 
 This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings, where you can enter your Zendesk Chat API Code.
 
-**Like this plugin?** Consider leaving a [5 star review](https://wordpress.org/support/plugin/zendesk-chat-widget-via-api/reviews/).
+**Like this plugin?** Consider leaving a [5 star review](https://wordpress.org/support/plugin/widget-for-zendesk-chat-via-api/reviews/).
 
 We also provide additional plugins to enhance your Easy Digital Downloads (EDD) store. Checkout our other plugins:
 
@@ -69,4 +69,4 @@ You may contact our [Support](https://www.pluginsandsnippets.com/contact/?utm_so
 = 1.2 : March 02, 2022 =
 * Updated release for documentation and wording *
 = 1.0 : March 01, 2022 =
-* Zendesk Chat Widget via API Released*
+* Widget for Zendesk Chat via API Released*
