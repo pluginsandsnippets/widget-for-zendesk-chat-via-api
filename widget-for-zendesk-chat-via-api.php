@@ -3,7 +3,7 @@
  * Plugin Name:       Widget for Zendesk Chat via API
  * Plugin URI:        https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/
  * Description:       This plugin loads Zendesk Chat widget (formerly Zopim chat) via API with a slight time delay. This improves the page loading speed of your website compared to the standard Zendesk Chat plugin. Make your website faster loading Zendesk Chat widget this way!
- * Version:           1.4
+ * Version:           1.5
  * Author:            Plugins & Snippets
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       widget-for-zendesk-chat-via-api
@@ -26,7 +26,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function __construct() {
             
-            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.4' );
+            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.5' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME', 'Widget for Zendesk Chat via API' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR', plugin_dir_path( __FILE__ ) );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -93,33 +93,20 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         }
         
         public function create_options_menu() {
-            add_submenu_page( 'options-general.php', __( 'Zendesk Chat Settings', 'ps-widget-for-zendesk-chat-via-api' ), __( 'Zendesk Chat Settings', 'ps-widget-for-zendesk-chat-via-api' ), 'manage_options', 'ps-widget-for-zendesk-chat-via-api', array(
+            add_submenu_page( 'options-general.php', __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ), __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ), 'manage_options', 'widget-for-zendesk-chat-via-api', array(
                 $this,
                 'options_page' 
             ) );
         }
         
         public function options_page() {
-            
-            if ( isset( $_POST['ps_zendesk_chat_widget_api_code'] ) ) {
-                update_option( 'ps_zendesk_chat_widget_api_code', $_POST['ps_zendesk_chat_widget_api_code'], false );
+
+            if ( current_user_can( 'manage_options' ) && wp_verify_nonce( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'], 'ps_zendesk_chat_widget_api_code_nonce' ) && isset( $_POST['ps_zendesk_chat_widget_api_code'] ) ) {
+
+                update_option( 'ps_zendesk_chat_widget_api_code', sanitize_text_field( wp_unslash( $_POST['ps_zendesk_chat_widget_api_code'] ) ), false );
             }
-            
-            $code = $this->get_api_code();
-            echo '<h1>' . __( 'Zendesk Chat Settings', 'ps-widget-for-zendesk-chat-via-api' ) . '</h1>';
-            
-            echo '<form method="POST">';
-            echo '<p>' . __( 'Please enter your Zendesk Chat Account Key so that the Zendesk Chat Widget can be loaded via API. After entering the key please clear all caches and please disable the regular Zendesk Chat plugin as it will no longer be needed. Now the Zendesk Chat widget will be loaded via API with a slight time delay which improves the page loading speed of your website. Make your website faster with this plugin.', 'ps-widget-for-zendesk-chat-via-api' ) . '</p>';
-            echo '<p><a href="https://support.zendesk.com/hc/en-us/articles/4408825772698-How-do-I-find-my-Chat-Account-Key-" target="_blank">' . __( 'Find your Account Key', 'ps-widget-for-zendesk-chat-via-api' ) . '</a></p>';
-            echo '<div class="ps-widget-for-zendesk-chat-via-api-field">';
-            echo '<label for="ps-widget-for-zendesk-chat-via-api-code">' . __( 'Zendesk Chat API Code', 'ps-widget-for-zendesk-chat-via-api' ) . '</label>';
-            echo '<input type="text" name="ps_zendesk_chat_widget_api_code" value="' . esc_attr( $code ) . '" />';
-            echo '</div>';
-            
-            echo '<div class="ps-widget-for-zendesk-chat-via-api-submit">
-                        <button type="submit" class="button-primary">' . __( 'Save', 'ps-widget-for-zendesk-chat-via-api' ) . '</button>
-                    </div>';
-            echo '</form>';
+
+            require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/settings.php';
         }
         
         public function init_zendesk_chat_widget() {
@@ -179,12 +166,12 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             
             $markup .= '</script>';
             
-            echo $markup;
+            echo esc_js($markup);
         }
         
         public function load_admin_css() {
-            wp_enqueue_script( 'ps-widget-for-zendesk-chat-via-api-admin-js', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/js/admin.js' );
-            wp_enqueue_style( 'ps-widget-for-zendesk-chat-via-api-admin-css', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/css/admin.css', array(), PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER, 'all' );
+            wp_enqueue_script( 'widget-for-zendesk-chat-via-api-admin-js', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/js/admin.js' );
+            wp_enqueue_style( 'widget-for-zendesk-chat-via-api-admin-css', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/css/admin.css', array(), PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER, 'all' );
         }
         
         /**
@@ -199,14 +186,14 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                 $user_n = " " . $current_user->display_name;
             }
             
-            echo "<div id='ps-widget-for-zendesk-chat-via-api-review' class='notice notice-info is-dismissible'><p>" . sprintf( __( "Hi%s, Thank you for using <b>" . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME . "</b>. Please don't forget to rate our plugin. We sincerely appreciate your feedback.", 'ps-widget-for-zendesk-chat-via-api' ), $user_n ) . '<br><a target="_blank" href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" class="button-secondary">' . esc_html__( 'Post Review', 'ps-widget-for-zendesk-chat-via-api' ) . '</a>' . '</p></div>';
+            echo esc_html("<div id='widget-for-zendesk-chat-via-api-review' class='notice notice-info is-dismissible'><p>" . sprintf( __( "Hi%s, Thank you for using <b>" . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME . "</b>. Please don't forget to rate our plugin. We sincerely appreciate your feedback.", 'widget-for-zendesk-chat-via-api' ), $user_n ) . '<br><a target="_blank" href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" class="button-secondary">' . esc_html__( 'Post Review', 'widget-for-zendesk-chat-via-api' ) . '</a>' . '</p></div>');
         }
         
         /**
          * Loads the inline script to dismiss the review notice.
          */
         public function notice_review_script() {
-            echo "<script>\n" . "jQuery(document).on('click', '#ps-widget-for-zendesk-chat-via-api-review .notice-dismiss', function() {\n" . "\tvar ps_widget_for_zendesk_chat_via_api_review_data = {\n" . "\t\taction: 'ps_widget_for_zendesk_chat_via_api_review_notice',\n" . "\t};\n" . "\tjQuery.post(ajaxurl, ps_widget_for_zendesk_chat_via_api_review_data, function(response) {\n" . "\t\tif (response) {\n" . "\t\t\tconsole.log(response);\n" . "\t\t}\n" . "\t});\n" . "});\n" . "</script>\n";
+            echo esc_html("<script>\n" . "jQuery(document).on('click', '#widget-for-zendesk-chat-via-api-review .notice-dismiss', function() {\n" . "\tvar ps_widget_for_zendesk_chat_via_api_review_data = {\n" . "\t\taction: 'ps_widget_for_zendesk_chat_via_api_review_notice',\n" . "\t};\n" . "\tjQuery.post(ajaxurl, ps_widget_for_zendesk_chat_via_api_review_data, function(response) {\n" . "\t\tif (response) {\n" . "\t\t\tconsole.log(response);\n" . "\t\t}\n" . "\t});\n" . "});\n" . "</script>\n");
         }
         
         /**
@@ -227,15 +214,15 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         public function add_action_links( $plugin_meta, $plugin_file ) {
             
             if ( $plugin_file === plugin_basename( __FILE__ ) ) {
-                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DOCUMENTATION_URL . '" target="_blank">' . __( 'Documentation', 'ps-widget-for-zendesk-chat-via-api' ) . '</a>';
+                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DOCUMENTATION_URL . '" target="_blank">' . __( 'Documentation', 'widget-for-zendesk-chat-via-api' ) . '</a>';
                 
                 array_push( $plugin_meta, $link );
 
-                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_OPEN_TICKET_URL . '" target="_blank">' . __( 'Open Support Ticket', 'ps-widget-for-zendesk-chat-via-api' ) . '</a>';
+                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_OPEN_TICKET_URL . '" target="_blank">' . __( 'Open Support Ticket', 'widget-for-zendesk-chat-via-api' ) . '</a>';
                 
                 array_push( $plugin_meta, $link );
 
-                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" target="_blank">' . __( 'Post Review', 'ps-widget-for-zendesk-chat-via-api' ) . '</a>';
+                $link = '<a href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" target="_blank">' . __( 'Post Review', 'widget-for-zendesk-chat-via-api' ) . '</a>';
 
                 array_push( $plugin_meta, $link );
 
@@ -270,7 +257,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                 wp_die();
             }
             
-            $reason_id = sanitize_text_field( wp_unslash( $_POST['reason'] ) );
+            $reason_id = intval( sanitize_text_field( wp_unslash( $_POST['reason'] ) ) );
             
             if ( empty( $reason_id ) ) {
                 wp_die();
@@ -347,7 +334,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             }
             
             if ( $file == $this_plugin ) {
-                $settings_link = sprintf( esc_html__( '%1$s Settings %2$s', 'ps-widget-for-zendesk-chat-via-api' ), '<a href="' . admin_url( 'options-general.php?page=ps-widget-for-zendesk-chat-via-api' ) . '">', '</a>' );
+                $settings_link = sprintf( esc_html__( '%1$s Settings %2$s', 'widget-for-zendesk-chat-via-api' ), '<a href="' . admin_url( 'options-general.php?page=widget-for-zendesk-chat-via-api' ) . '">', '</a>' );
                 
                 array_unshift( $links, $settings_link );
 

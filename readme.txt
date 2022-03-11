@@ -7,7 +7,7 @@ Tags: zendesk, chat, zoopim, zendesk, api, widget, speed, speed optimization
 Requires at least: 3.5
 Tested up to: 5.9.1
 Requires PHP: 5.6
-Stable Tag: trunk
+Stable Tag: 1.5
 License: GNU Version 2 or Any Later Version
 
 Improve the loading speed of your website by allowing a slight time delay on your Zendesk Chat Widget.
