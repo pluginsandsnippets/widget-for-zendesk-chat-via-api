@@ -116,34 +116,32 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                 return;
             }
             
-            $markup = '<script>
+            echo '<script>
                     function load_zopim() {
                         window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
                         d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
                         _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute(\'charset\',\'utf-8\');
-                        $.src=\'//v2.zopim.com/?' . $code . '\';z.t=+new Date;$.
+                        $.src=\'//v2.zopim.com/?' . esc_attr( $code ) . '\';z.t=+new Date;$.
                         type=\'text/javascript\';e.parentNode.insertBefore($,e)})(document,\'script\');
                     }
                 </script>';
             
-            $current_user_data_set = '';
+            echo '<script>';
+            echo 'function call_zopim() {';
             
             if ( is_user_logged_in() ) {
                 $current_user = wp_get_current_user();
                 $first_name   = $current_user->display_name;
                 $user_email   = $current_user->user_email;
                 
-                $current_user_data_set = '$zopim(function(){$zopim.livechat.set({name: \'' . $first_name . '\', email: \'' . $user_email . '\'}); });';
+                echo '$zopim(function(){$zopim.livechat.set({name: \'' . esc_attr( $first_name ) . '\', email: \'' . esc_attr( $user_email ) . '\'}); });';
             }
-            
-            $markup .= '<script>';
-            $markup .= 'function call_zopim() {
-                    ' . $current_user_data_set . '
-                    $zopim( function() {});
-                }';
+
+            echo '$zopim( function() {});';
+            echo '}';
             
             // Following JS loads and calls widget when one of two criterian is met
-            $markup .= 'var zopim_loaded = false;
+            echo 'var zopim_loaded = false;
                 jQuery(window).on(\'scroll\', function() {
                     window.setTimeout(function() {
                         if( ! zopim_loaded ) {
@@ -164,9 +162,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                     }, 10000);
                 });';
             
-            $markup .= '</script>';
-            
-            echo esc_js($markup);
+            echo '</script>';
         }
         
         public function load_admin_css() {
