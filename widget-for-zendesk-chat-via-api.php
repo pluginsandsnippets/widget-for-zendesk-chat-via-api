@@ -8,7 +8,7 @@
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       widget-for-zendesk-chat-via-api
  * Requires at least: 3.5
- * Tested up to:      5.9.1
+ * Tested up to:      5.9.2
  *
  * @author            PluginsandSnippets.com
  * @copyright         All rights reserved Copyright (c) 2022, PluginsandSnippets.com
@@ -182,14 +182,14 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                 $user_n = " " . $current_user->display_name;
             }
             
-            echo esc_html("<div id='widget-for-zendesk-chat-via-api-review' class='notice notice-info is-dismissible'><p>" . sprintf( __( "Hi%s, Thank you for using <b>" . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME . "</b>. Please don't forget to rate our plugin. We sincerely appreciate your feedback.", 'widget-for-zendesk-chat-via-api' ), $user_n ) . '<br><a target="_blank" href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" class="button-secondary">' . esc_html__( 'Post Review', 'widget-for-zendesk-chat-via-api' ) . '</a>' . '</p></div>');
+            echo "<div id='widget-for-zendesk-chat-via-api-review' class='notice notice-info is-dismissible'><p>" . sprintf( __( "Hi%s, Thank you for using <b>" . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME . "</b>. Please don't forget to rate our plugin. We sincerely appreciate your feedback.", 'widget-for-zendesk-chat-via-api' ), $user_n ) . '<br><a target="_blank" href="' . PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL . '" class="button-secondary">' . esc_html__( 'Post Review', 'widget-for-zendesk-chat-via-api' ) . '</a>' . '</p></div>';
         }
         
         /**
          * Loads the inline script to dismiss the review notice.
          */
         public function notice_review_script() {
-            echo esc_html("<script>\n" . "jQuery(document).on('click', '#widget-for-zendesk-chat-via-api-review .notice-dismiss', function() {\n" . "\tvar ps_widget_for_zendesk_chat_via_api_review_data = {\n" . "\t\taction: 'ps_widget_for_zendesk_chat_via_api_review_notice',\n" . "\t};\n" . "\tjQuery.post(ajaxurl, ps_widget_for_zendesk_chat_via_api_review_data, function(response) {\n" . "\t\tif (response) {\n" . "\t\t\tconsole.log(response);\n" . "\t\t}\n" . "\t});\n" . "});\n" . "</script>\n");
+            echo "<script>\n" . "jQuery(document).on('click', '#widget-for-zendesk-chat-via-api-review .notice-dismiss', function() {\n" . "\tvar ps_widget_for_zendesk_chat_via_api_review_data = {\n" . "\t\taction: 'ps_widget_for_zendesk_chat_via_api_review_notice',\n" . "\t};\n" . "\tjQuery.post(ajaxurl, ps_widget_for_zendesk_chat_via_api_review_data, function(response) {\n" . "\t\tif (response) {\n" . "\t\t\tconsole.log(response);\n" . "\t\t}\n" . "\t});\n" . "});\n" . "</script>\n";
         }
         
         /**
