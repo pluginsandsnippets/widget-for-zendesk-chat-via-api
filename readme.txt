@@ -15,16 +15,15 @@ This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimiz
 
 == Description ==
 
-**This plugin loads Zendesk Chat widget (formerly Zopim chat) via API with a slight time delay. This improves the page loading speed of your website compared to the standard Zendesk Chat plugin. Make your website faster loading Zendesk Chat widget this way!**
- 
-The way this WordPress Plugin works is that once your webpage has been opened, the Zendesk Chat Widget will have a slight time delay in loading, giving more time and room for the whole webpage to load first, thus decreasing its loading time. After a few seconds, the Zendesk Chat Widget will now load and open by itself.
+**This plugin offers a faster way to load the Zendesk Chat Widget than the standard Zendesk Chat Plugin. Optimizes the page load speed. Quick and easy to implement. Make your website faster loading Zendesk Chat widget this way!**
+Once your webpage has been opened, the Zendesk Chat Widget will be loaded directly via API with a slight time delay. This frees up blocked loading time so that the webpage fully loads first. This greatly enhances the applicable SEO page speed metrics as the standard Zendesk Chat plugin requires too much time to load a website fast.
 
-This process follows two criteria:
+The time delay is defined as follows:
 
 * Webpage is loaded but left still - The Zendesk Chat Widget will wait for 10 seconds before loading and opening.
 * Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait for 3 seconds before loading and opening.
 
-This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings, where you can enter your Zendesk Chat API Code.
+This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings. Simply follow the instructions to enter your Zendesk Chat API Key and you are done. Quick and easay to implement.
 
 **Like this plugin?** Consider leaving a [5 star review](https://wordpress.org/support/plugin/widget-for-zendesk-chat-via-api/reviews/).
 
