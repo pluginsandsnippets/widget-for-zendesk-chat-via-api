@@ -16,7 +16,8 @@ This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimiz
 == Description ==
 
 **This plugin offers a faster way to load the Zendesk Chat Widget than the standard Zendesk Chat Plugin. Optimizes the page load speed. Quick and easy to implement. Make your website faster loading Zendesk Chat widget this way!**
-Once your webpage has been opened, the Zendesk Chat Widget will be loaded directly via API with a slight time delay. This frees up blocked loading time so that the webpage fully loads first. This greatly enhances the applicable SEO page speed metrics as the standard Zendesk Chat plugin requires too much time to load a website fast.
+
+Once your webpage is called, the Zendesk Chat Widget will be loaded directly via API with a slight time delay. This frees up blocked loading time so that the webpage fully loads first. This greatly enhances the applicable SEO page speed metrics as the standard Zendesk Chat plugin requires too much time to load a website fast.
 
 The time delay is defined as follows:
 
