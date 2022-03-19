@@ -10,7 +10,7 @@ Requires PHP: 5.6
 Stable Tag: 1.5
 License: GNU Version 2 or Any Later Version
 
-Improve the loading speed of your website by allowing a slight time delay on your Zendesk Chat Widget.
+This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimizes the page load speed. Quick and easy to implement.
 
 
 == Description ==
