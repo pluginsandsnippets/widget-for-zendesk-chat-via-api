@@ -7,7 +7,7 @@ Tags: zendesk chat, zendesk, chat, zoopim, zendesk, api, widget, speed, speed op
 Requires at least: 3.5
 Tested up to: 5.9.2
 Requires PHP: 5.6
-Stable Tag: 1.6
+Stable Tag: 1.7
 License: GNU Version 2 or Any Later Version
 
 This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimizes the page load speed. Quick and easy to implement.
@@ -64,6 +64,8 @@ You may contact our [Support](https://www.pluginsandsnippets.com/contact/?utm_so
 
 
 == Changelog ==
+= 1.7 : March 29, 2022 =
+* Fixed PHP Warning
 = 1.6 : March 21, 2022 =
 * Plugin description updated
 = 1.3 : March 02, 2022 =

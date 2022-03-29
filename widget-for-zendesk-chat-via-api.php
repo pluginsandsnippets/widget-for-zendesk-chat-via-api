@@ -3,7 +3,7 @@
  * Plugin Name:       Widget for Zendesk Chat via API
  * Plugin URI:        https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/
  * Description:       This plugin loads Zendesk Chat widget (formerly Zopim chat) via API with a slight time delay. This improves the page loading speed of your website compared to the standard Zendesk Chat plugin. Make your website faster loading Zendesk Chat widget this way!
- * Version:           1.6
+ * Version:           1.7
  * Author:            Plugins & Snippets
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       widget-for-zendesk-chat-via-api
@@ -26,7 +26,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function __construct() {
             
-            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.6' );
+            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.7' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME', 'Widget for Zendesk Chat via API' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR', plugin_dir_path( __FILE__ ) );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -101,7 +101,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function options_page() {
 
-            if ( current_user_can( 'manage_options' ) && wp_verify_nonce( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'], 'ps_zendesk_chat_widget_api_code_nonce' ) && isset( $_POST['ps_zendesk_chat_widget_api_code'] ) ) {
+            if ( current_user_can( 'manage_options' ) && isset( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'] ) && wp_verify_nonce( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'], 'ps_zendesk_chat_widget_api_code_nonce' ) && isset( $_POST['ps_zendesk_chat_widget_api_code'] ) ) {
 
                 update_option( 'ps_zendesk_chat_widget_api_code', sanitize_text_field( wp_unslash( $_POST['ps_zendesk_chat_widget_api_code'] ) ), false );
             }
