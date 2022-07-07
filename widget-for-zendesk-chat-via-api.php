@@ -92,6 +92,17 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             return get_option( 'ps_zendesk_chat_widget_api_code' );
         }
         
+        public function get_api_delay_time() {
+            $delay_time = intval( get_option( 'ps_zendesk_chat_widget_api_delay_time' ) );
+
+            // delay time is forced to be at least 10 seconds
+            if( empty( $delay_time ) || $delay_time < 10 ) {
+                $delay_time = 10;
+            }
+
+            return $delay_time;
+        }
+        
         public function create_options_menu() {
             add_submenu_page( 'options-general.php', __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ), __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ), 'manage_options', 'widget-for-zendesk-chat-via-api', array(
                 $this,
@@ -104,13 +115,16 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             if ( current_user_can( 'manage_options' ) && isset( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'] ) && wp_verify_nonce( $_REQUEST['ps_zendesk_chat_widget_api_code_nonce'], 'ps_zendesk_chat_widget_api_code_nonce' ) && isset( $_POST['ps_zendesk_chat_widget_api_code'] ) ) {
 
                 update_option( 'ps_zendesk_chat_widget_api_code', sanitize_text_field( wp_unslash( $_POST['ps_zendesk_chat_widget_api_code'] ) ), false );
+                
+                update_option( 'ps_zendesk_chat_widget_api_delay_time', sanitize_text_field( intval( $_POST['ps_zendesk_chat_widget_api_delay_time'] ) ), false );
             }
 
             require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/settings.php';
         }
         
         public function init_zendesk_chat_widget() {
-            $code = $this->get_api_code();
+            $code       = $this->get_api_code();
+            $delay_time = $this->get_api_delay_time();
             
             if ( empty( $code ) ) {
                 return;
@@ -149,7 +163,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                             call_zopim();
                             zopim_loaded = true;
                         }
-                    }, 3000);
+                    }, 5000);
                 });
 
                 jQuery(window).on(\'load\', function() {
@@ -159,7 +173,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
                             call_zopim();
                             zopim_loaded = true;
                         }
-                    }, 10000);
+                    }, ' . ( $delay_time * 1000 ) . ');
                 });';
             
             echo '</script>';
