@@ -21,8 +21,11 @@ Once your webpage is called, the Zendesk Chat Widget will be loaded directly via
 
 The time delay is defined as follows:
 
-* Webpage is loaded but left still - The Zendesk Chat Widget will wait for 10 seconds before loading and opening.
-* Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait for 5 seconds before loading and opening.
+* Webpage is loaded but left still - The Zendesk Chat Widget will wait for minimum 10 seconds before loading and opening.
+* Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait for 3 seconds before loading and opening.
+* The Settings of the Plugin allow you to increase the 10 second delay further if needed
+
+
 
 This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings. Simply follow the instructions to enter your Zendesk Chat API Key and you are done. Quick and easay to implement.
 
