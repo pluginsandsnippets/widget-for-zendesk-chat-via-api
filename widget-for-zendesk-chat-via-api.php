@@ -80,11 +80,11 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             ) );
             add_action( 'wp_ajax_ps_widget_for_zendesk_chat_via_api_deactivation', array(
                 $this,
-                'ps_widget_for_zendesk_chat_via_api_deactivation' 
+                'handle_deactivation_response' 
             ) );
             add_action( 'plugin_action_links', array(
                 $this,
-                'ps_widget_for_zendesk_chat_via_api_action_links' 
+                'action_links' 
             ), 10, 2 );
         }
         
@@ -259,7 +259,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
          *
          * @since  1.0.0
          */
-        public function ps_widget_for_zendesk_chat_via_api_deactivation() {
+        public function handle_deactivation_response() {
 
             wp_verify_nonce( $_REQUEST['ps_widget_for_zendesk_chat_via_api_deactivation_nonce'], 'ps_widget_for_zendesk_chat_via_api_deactivation_nonce' );
             
@@ -335,7 +335,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
          *
          * @since  1.0.0
          */
-        public function ps_widget_for_zendesk_chat_via_api_action_links( $links, $file ) {
+        public function action_links( $links, $file ) {
             
             static $this_plugin;
             
