@@ -18,6 +18,8 @@ $delay_time = $this->main_instance->get_api_delay_time();
 
 <h1><?php __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ); ?></h1>
 
+<?php require PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/subscription-callout.php'; ?>
+
 <form method="POST">
     <p>
         <?php echo __( 'Please enter your Zendesk Chat Account Key so that the Zendesk Chat Widget can be loaded via API. After entering the key please clear all caches and please disable the regular Zendesk Chat plugin as it will no longer be needed. Now the Zendesk Chat widget will be loaded via API with a slight time delay which improves the page loading speed of your website. Make your website faster with this plugin.', 'widget-for-zendesk-chat-via-api' ); ?>
@@ -48,3 +50,32 @@ $delay_time = $this->main_instance->get_api_delay_time();
         </button>
     </div>
 </form>
+
+<?php if ( isset( $promos ) && ! empty( $promos ) ): ?>
+    <div class="widget-for-zendesk-chat-via-api-other-plugins">
+        <?php foreach ( $promos as $promo ): ?>
+            <div class="widget-for-zendesk-chat-via-api-other-plugin">
+                <div class="widget-for-zendesk-chat-via-api-other-plugin-title">
+                    <a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a>
+                </div>
+                <div class="widget-for-zendesk-chat-via-api-other-plugin-links">
+                    <div><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php _e( 'View', 'ps-plugin-template' ); ?></a></div>
+                    <?php if ( isset( $promo['documentation'] ) ): ?>
+                        <div><a href="<?php echo esc_url( $promo['documentation'] ); ?>" target="_blank"><?php _e( 'Documentation', 'ps-plugin-template' ); ?></a></div>
+                    <?php endif; ?>
+                    <?php if ( isset( $promo['support'] ) ): ?>
+                        <div><a href="<?php echo esc_url( $promo['support'] ); ?>" target="_blank"><?php _e( 'Support', 'ps-plugin-template' ); ?></a></div>
+                    <?php endif; ?>
+                </div>
+                <div class="widget-for-zendesk-chat-via-api-other-plugin-image"><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><img src="<?php echo esc_url( $promo['image'] ); ?>" /></a></div>
+                <div class="widget-for-zendesk-chat-via-api-other-plugin-desc">
+                    <?php if ( $promo['initial_link'] ) : ?>
+                    <a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a> 
+                    <?php endif; ?>
+
+                    <?php echo $promo['description']; ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+    <?php endif; ?>

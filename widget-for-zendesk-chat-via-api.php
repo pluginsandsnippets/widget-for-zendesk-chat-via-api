@@ -33,6 +33,8 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DOCUMENTATION_URL', 'https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_OPEN_TICKET_URL', 'https://www.pluginsandsnippets.com/open-ticket/' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_REVIEW_URL', 'https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/reviews/#new-post' );
+
+            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_SUBSCRIBE_URL', 'https://www.pluginsandsnippets.com/?ps-subscription-request=1' );
             
             add_action( 'wp_footer', array(
                 $this,

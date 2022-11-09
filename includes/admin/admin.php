@@ -60,6 +60,9 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
                 $this,
                 'action_links' 
             ), 10, 2 );
+
+            add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_handle_subscription_request' , array( $this, 'process_subscription' ) );
+            add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_subscription_popup_shown' , array( $this, 'subscription_shown' ) );
         }
 
         public function create_options_menu() {
@@ -78,6 +81,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
                 update_option( 'ps_zendesk_chat_widget_api_delay_time', sanitize_text_field( intval( $_POST['ps_zendesk_chat_widget_api_delay_time'] ) ), false );
             }
 
+            require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/promos-configuration.php';
             require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings.php';
         }
 
@@ -253,6 +257,38 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
             }
             
             return $links;
+        }
+
+        public function process_subscription() {
+            if ( isset( $_POST['email'] ) && filter_var( $_POST['email'], FILTER_VALIDATE_EMAIL ) ) {
+                $email = $_POST['email'];
+            } else {
+                $email = get_option( 'admin_email' );
+            }
+
+            wp_remote_post( PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_SUBSCRIBE_URL, array(
+                'body' => array(
+                    'email'       => $email,
+                    'plugin_name' => PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME,
+                ),
+            ) );
+
+            if ( ! isset( $_POST['from_callout'] ) ) {
+                update_option( 'widget_for_zendesk_chat_via_api_subscription_shown', 'y', false );
+            }
+            
+            wp_send_json( array(
+                'processed' => 1,
+            ) );
+        }
+
+        public function subscription_shown() {
+            
+            update_option( 'widget_for_zendesk_chat_via_api_subscription_shown', 'y', false );
+            
+            wp_send_json( array(
+                'processed' => 1,
+            ) );
         }
 
     }

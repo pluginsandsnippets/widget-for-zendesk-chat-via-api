@@ -98,5 +98,55 @@
             $('.ps-zendesk-chat-pro-message').hide();
         }
         
+        // Overtake the form submission request
+        $( '.widget-for-zendesk-chat-via-api-subscription-form' ).on( 'submit', function( e ) {
+            e.preventDefault();
+            
+            if ( $( '.widget-for-zendesk-chat-via-api-subscription-callout' ).hasClass( 'ajaxing' ) ) {
+                return; // request is already in progress
+            }
+
+            $( '.widget-for-zendesk-chat-via-api-subscription-callout' ).addClass( 'ajaxing' );
+
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    action: 'widget_for_zendesk_chat_via_api_handle_subscription_request',
+                    email: $( '.widget-for-zendesk-chat-via-api-subscription-form input' ).val(),
+                    from_callout: 1,
+                },
+                success: function( data ) {
+                    $( '.widget-for-zendesk-chat-via-api-subscription-callout-main' ).hide();
+                    $( '.widget-for-zendesk-chat-via-api-subscription-callout-thanks' ).show();
+                }
+            })
+            .fail( function() {
+                $( '.widget-for-zendesk-chat-via-api-subscription-error' ).show();
+            } )
+            .always( function() {
+                $( '.widget-for-zendesk-chat-via-api-subscription-callout' ).removeClass( 'ajaxing' );
+            } );
+        } );
+
+        function store_popup_shown_status() {
+            $.ajax( {
+                url: ajaxurl,
+                type: 'POST',
+                dataType: 'JSON',
+                data: {
+                    action: 'widget_for_zendesk_chat_via_api_subscription_popup_shown'
+                },
+            } );
+            
+        }
+
+        $( '.widget-for-zendesk-chat-via-api-subscription-skip' ).on( 'click', function( e ) {
+            e.preventDefault();
+            $( '.widget-for-zendesk-chat-via-api-subscription-callout-wrapper' ).removeClass( 'open' );
+            store_popup_shown_status();
+        } );
+
     });
 })(jQuery);
