@@ -11,8 +11,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-$code       = $this->get_api_code();
-$delay_time = $this->get_api_delay_time();
+$code       = $this->main_instance->get_api_code();
+$delay_time = $this->main_instance->get_api_delay_time();
 
 ?>
 
