@@ -1,19 +1,23 @@
-.ps-zendesk-chat-hidden {
+.ps-wfzcva-hidden {
     overflow: hidden;
 }
-.ps-zendesk-chat-popup-overlay .ps-zendesk-chat-internal-message {
+
+.ps-wfzcva-popup-overlay .ps-wfzcva-internal-message {
     margin: 3px 0 3px 22px;
     display: none;
 }
-.ps-zendesk-chat-reason-input {
+
+.ps-wfzcva-reason-input {
     margin: 3px 0 3px 22px;
     display: none;
 }
-.ps-zendesk-chat-reason-input input[type="text"] {
+
+.ps-wfzcva-reason-input input[type="text"] {
     width: 100%;
     display: block;
 }
-.ps-zendesk-chat-popup-overlay {
+
+.ps-wfzcva-popup-overlay {
     background: rgba(0, 0, 0, .8);
     position: fixed;
     top: 0;
@@ -29,69 +33,84 @@
     justify-content: center;
     align-items: center;
 }
-.ps-zendesk-chat-popup-overlay.ps-zendesk-chat-active {
+
+.ps-wfzcva-popup-overlay.ps-wfzcva-active {
     opacity: 1;
     visibility: visible;
 }
-.ps-zendesk-chat-serveypanel {
+
+.ps-wfzcva-serveypanel {
     width: 600px;
     background: #fff;
     margin: 0 auto 0;
     border-radius: 3px;
 }
-.ps-zendesk-chat-popup-header {
+
+.ps-wfzcva-popup-header {
     background: #f1f1f1;
     padding: 20px;
     border-bottom: 1px solid #ccc;
 }
-.ps-zendesk-chat-popup-header h2 {
+
+.ps-wfzcva-popup-header h2 {
     margin: 0;
     text-transform: uppercase;
 }
-.ps-zendesk-chat-popup-body {
+
+.ps-wfzcva-popup-body {
     padding: 10px 20px;
 }
-.ps-zendesk-chat-popup-footer {
+
+.ps-wfzcva-popup-footer {
     background: #f9f3f3;
     padding: 10px 20px;
     border-top: 1px solid #ccc;
 }
-.ps-zendesk-chat-popup-footer:after {
+
+.ps-wfzcva-popup-footer:after {
     content: "";
     display: table;
     clear: both;
 }
+
 .action-btns {
     float: right;
 }
-.ps-zendesk-chat-anonymous {
+
+.ps-wfzcva-anonymous {
     display: none;
 }
+
 .attention, .error-message {
     color: red;
     font-weight: 600;
     display: none;
 }
-.ps-zendesk-chat-spinner {
+
+.ps-wfzcva-spinner {
     display: none;
 }
-.ps-zendesk-chat-spinner img {
+
+.ps-wfzcva-spinner img {
     margin-top: 3px;
 }
-.ps-zendesk-chat-pro-message {
+
+.ps-wfzcva-pro-message {
     padding-left: 24px;
     color: red;
     font-weight: 600;
     display: none;
 }
-.ps-zendesk-chat-popup-header {
+
+.ps-wfzcva-popup-header {
     background: none;
     padding: 18px 15px;
     -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .1);
     box-shadow: 0 0 8px rgba(0, 0, 0, .1);
     border: 0;
 }
-.ps-zendesk-chat-popup-body h3 {
+
+.ps-wfzcva-popup-body h3 {
     margin-top: 0;
     margin-bottom: 30px;
     font-weight: 700;
@@ -100,49 +119,56 @@
     line-height: 1.4;
     text-tranform: uppercase;
 }
-.ps-zendesk-chat-reason {
+
+.ps-wfzcva-reason {
     font-size: 13px;
     color: #6d7882;
     margin-bottom: 15px;
 }
-.ps-zendesk-chat-reason input[type="radio"] {
+
+.ps-wfzcva-reason input[type="radio"] {
     margin-right: 15px;
 }
-.ps-zendesk-chat-popup-body {
+
+.ps-wfzcva-popup-body {
     padding: 30px 30px 0;
 }
-.ps-zendesk-chat-popup-footer {
+
+.ps-wfzcva-popup-footer {
     background: none;
     border: 0;
     padding: 29px 39px 39px;
 }
-.widget-for-zendesk-chat-via-api-field label {
+
+.ps-wfzcva-field label {
     display: block;
     font-weight: 600;
     margin: 0 0 10px;
 }
-.widget-for-zendesk-chat-via-api-field input {
+
+.ps-wfzcva-field input {
     width: 100%;
 }
-.widget-for-zendesk-chat-via-api-field {
+
+.ps-wfzcva-field {
     max-width: 600px;
     padding-right: 10px;
     margin: 0 0 10px;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugins {
+.ps-wfzcva-other-plugins {
     margin-top: 50px;
     max-width: 1500px;
     display: flex;
     flex-wrap: wrap;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugins img {
+.ps-wfzcva-other-plugins img {
     max-width: 100%;
     height: auto;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin {
+.ps-wfzcva-other-plugin {
     width: 31.5%;
     background: #fff;
     box-shadow: 0 0 4px rgba(0,0,0,0.15);
@@ -150,7 +176,7 @@
     margin-right: 1.83%;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-title a {
+.ps-wfzcva-other-plugin-title a {
     padding: 12px 10px 0;
     color: #000;
     font-weight: 500;
@@ -164,57 +190,57 @@
     flex-wrap: wrap;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-links {
+.ps-wfzcva-other-plugin-links {
     display: flex;
     align-items: center;
     padding: 0 10px 10px;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-links a {
+.ps-wfzcva-other-plugin-links a {
     text-decoration: none;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-links div:not(:last-child):after {
+.ps-wfzcva-other-plugin-links div:not(:last-child):after {
     content: ' | ';
     padding: 0 5px;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-desc {
+.ps-wfzcva-other-plugin-desc {
     padding: 14px;
     line-height: 1.6;
 }
 
-.widget-for-zendesk-chat-via-api-other-plugin-image {
+.ps-wfzcva-other-plugin-image {
     max-height: 320px;
     overflow: hidden;
     height: 320px;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout {
+.ps-wfzcva-subscription-callout {
     background: #fff;
     border: 1px solid #ddd;
     padding: 10px;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout h3 {
+.ps-wfzcva-subscription-callout h3 {
     margin: 0;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout-main .widget-for-zendesk-chat-via-api-subscription-form {
+.ps-wfzcva-subscription-callout-main .ps-wfzcva-subscription-form {
     display: flex;
     align-items: center;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout-main .widget-for-zendesk-chat-via-api-subscription-form input {
+.ps-wfzcva-subscription-callout-main .ps-wfzcva-subscription-form input {
     width: 100%;
     max-width: 350px;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout.ajaxing {
+.ps-wfzcva-subscription-callout.ajaxing {
     position: relative;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout.ajaxing:before {
+.ps-wfzcva-subscription-callout.ajaxing:before {
     content: '';
     display: block;
     width: 100%;
@@ -226,7 +252,7 @@
     left: 0;
 }
 
-.widget-for-zendesk-chat-via-api-subscription-callout.ajaxing:after {
+.ps-wfzcva-subscription-callout.ajaxing:after {
     content: '';
     display: block;
     width: 16px;

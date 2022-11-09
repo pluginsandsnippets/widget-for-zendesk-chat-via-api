@@ -30,21 +30,21 @@ $delay_time = $this->main_instance->get_api_delay_time();
         </a>
     </p>
 
-    <div class="widget-for-zendesk-chat-via-api-field">
-        <label for="widget-for-zendesk-chat-via-api-code">
+    <div class="ps-wfzcva-field">
+        <label for="ps-wfzcva-code">
             <?php echo __( 'Zendesk Chat API Code', 'widget-for-zendesk-chat-via-api' ); ?>
         </label>
         <input type="hidden" name="ps_zendesk_chat_widget_api_code_nonce" value="<?php echo esc_attr( wp_create_nonce( 'ps_zendesk_chat_widget_api_code_nonce' ) ) ?>" />
         <input type="text" name="ps_zendesk_chat_widget_api_code" value="<?php echo esc_attr( $code ) ?>" />
     </div>
-    <div class="widget-for-zendesk-chat-via-api-field">
-        <label for="widget-for-zendesk-chat-via-api-delay-time">
+    <div class="ps-wfzcva-field">
+        <label for="ps-wfzcva-delay-time">
             <?php echo __( 'Zendesk Chat API Delay Time', 'widget-for-zendesk-chat-via-api' ); ?>
         </label>
         <input type="number" min="10" name="ps_zendesk_chat_widget_api_delay_time" value="<?php echo esc_attr( $delay_time ) ?>" />
         <p><?php _e( 'This is the duration (in seconds) which the plugin will wait before loading the chat widget', 'widget-for-zendesk-chat-via-api' ); ?></p>
     </div>
-    <div class="widget-for-zendesk-chat-via-api-submit">
+    <div class="ps-wfzcva-submit">
         <button type="submit" class="button-primary">
             <?php echo __( 'Save', 'widget-for-zendesk-chat-via-api' ); ?>
         </button>
@@ -52,13 +52,13 @@ $delay_time = $this->main_instance->get_api_delay_time();
 </form>
 
 <?php if ( isset( $promos ) && ! empty( $promos ) ): ?>
-    <div class="widget-for-zendesk-chat-via-api-other-plugins">
+    <div class="ps-wfzcva-other-plugins">
         <?php foreach ( $promos as $promo ): ?>
-            <div class="widget-for-zendesk-chat-via-api-other-plugin">
-                <div class="widget-for-zendesk-chat-via-api-other-plugin-title">
+            <div class="ps-wfzcva-other-plugin">
+                <div class="ps-wfzcva-other-plugin-title">
                     <a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a>
                 </div>
-                <div class="widget-for-zendesk-chat-via-api-other-plugin-links">
+                <div class="ps-wfzcva-other-plugin-links">
                     <div><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php _e( 'View', 'ps-plugin-template' ); ?></a></div>
                     <?php if ( isset( $promo['documentation'] ) ): ?>
                         <div><a href="<?php echo esc_url( $promo['documentation'] ); ?>" target="_blank"><?php _e( 'Documentation', 'ps-plugin-template' ); ?></a></div>
@@ -67,8 +67,8 @@ $delay_time = $this->main_instance->get_api_delay_time();
                         <div><a href="<?php echo esc_url( $promo['support'] ); ?>" target="_blank"><?php _e( 'Support', 'ps-plugin-template' ); ?></a></div>
                     <?php endif; ?>
                 </div>
-                <div class="widget-for-zendesk-chat-via-api-other-plugin-image"><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><img src="<?php echo esc_url( $promo['image'] ); ?>" /></a></div>
-                <div class="widget-for-zendesk-chat-via-api-other-plugin-desc">
+                <div class="ps-wfzcva-other-plugin-image"><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><img src="<?php echo esc_url( $promo['image'] ); ?>" /></a></div>
+                <div class="ps-wfzcva-other-plugin-desc">
                     <?php if ( $promo['initial_link'] ) : ?>
                     <a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a> 
                     <?php endif; ?>
