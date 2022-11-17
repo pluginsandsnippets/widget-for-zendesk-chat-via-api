@@ -3,7 +3,7 @@
  * Plugin Name:       Widget for Zendesk Chat via API
  * Plugin URI:        https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/
  * Description:       This plugin loads Zendesk Chat widget (formerly Zopim chat) via API with a slight time delay. This improves the page loading speed of your website compared to the standard Zendesk Chat plugin. Make your website faster loading Zendesk Chat widget this way!
- * Version:           1.10
+ * Version:           1.11
  * Author:            Plugins & Snippets
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       widget-for-zendesk-chat-via-api
@@ -26,7 +26,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function __construct() {
             
-            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.10' );
+            define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER', '1.11' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_NAME', 'Widget for Zendesk Chat via API' );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR', plugin_dir_path( __FILE__ ) );
             define( 'PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -54,6 +54,63 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
         
         public function get_api_code() {
             return get_option( 'ps_zendesk_chat_widget_api_code' );
+        }
+
+        public function init_zendesk_chat_widget() {
+            $code       = $this->get_api_code();
+            $delay_time = $this->get_api_delay_time();
+            
+            if ( empty( $code ) ) {
+                return;
+            }
+            
+            echo '<script>
+                    function load_zopim() {
+                        window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+                        d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+                        _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute(\'charset\',\'utf-8\');
+                        $.src=\'//v2.zopim.com/?' . esc_attr( $code ) . '\';z.t=+new Date;$.
+                        type=\'text/javascript\';e.parentNode.insertBefore($,e)})(document,\'script\');
+                    }
+                </script>';
+            
+            echo '<script>';
+            echo 'function call_zopim() {';
+            
+            if ( is_user_logged_in() ) {
+                $current_user = wp_get_current_user();
+                $first_name   = $current_user->display_name;
+                $user_email   = $current_user->user_email;
+                
+                echo '$zopim(function(){$zopim.livechat.set({name: \'' . esc_attr( $first_name ) . '\', email: \'' . esc_attr( $user_email ) . '\'}); });';
+            }
+
+            echo '$zopim( function() {});';
+            echo '}';
+            
+            // Following JS loads and calls widget when one of two criterian is met
+            echo 'var zopim_loaded = false;
+                jQuery(window).on(\'scroll\', function() {
+                    window.setTimeout(function() {
+                        if( ! zopim_loaded ) {
+                            load_zopim();
+                            call_zopim();
+                            zopim_loaded = true;
+                        }
+                    }, 5000);
+                });
+
+                jQuery(window).on(\'load\', function() {
+                    window.setTimeout(function() {
+                        if( ! zopim_loaded ) {
+                            load_zopim();
+                            call_zopim();
+                            zopim_loaded = true;
+                        }
+                    }, ' . ( $delay_time * 1000 ) . ');
+                });';
+            
+            echo '</script>';
         }
         
         public function get_api_delay_time() {
