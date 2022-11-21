@@ -78,14 +78,14 @@
 			} ).done( function() {
 				$( '.ps-wfzcva-spinner' ).hide();
 				$( '.ps-wfzcva-popup-allow-deactivate' ).removeAttr( 'disabled' );
-				window.location.href = $( 'tr[data-slug='" + pluginSlug + "'] .deactivate a' ).attr( 'href' );
+				window.location.href = $( 'tr[data-slug="' + pluginSlug + '"] .deactivate a' ).attr( 'href' );
 			} );
 
 		} );
 		
 		$( '.ps-wfzcva-popup-skip-feedback' ).on( 'click', function( e ) {
 			// e.preventDefault();
-			window.location.href = $( 'tr[data-slug='" + pluginSlug + "'] .deactivate a' ).attr( 'href' );
+			window.location.href = $( 'tr[data-slug="' + pluginSlug + '"] .deactivate a' ).attr( 'href' );
 		})
 
 		function close_popup() {
