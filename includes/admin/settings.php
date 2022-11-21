@@ -59,12 +59,12 @@ $delay_time = $this->main_instance->get_api_delay_time();
 					<a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a>
 				</div>
 				<div class="ps-wfzcva-other-plugin-links">
-					<div><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php _e( 'View', 'ps-plugin-template' ); ?></a></div>
+					<div><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php _e( 'View', 'widget-for-zendesk-chat-via-api' ); ?></a></div>
 					<?php if ( isset( $promo['documentation'] ) ): ?>
-						<div><a href="<?php echo esc_url( $promo['documentation'] ); ?>" target="_blank"><?php _e( 'Documentation', 'ps-plugin-template' ); ?></a></div>
+						<div><a href="<?php echo esc_url( $promo['documentation'] ); ?>" target="_blank"><?php _e( 'Documentation', 'widget-for-zendesk-chat-via-api' ); ?></a></div>
 					<?php endif; ?>
 					<?php if ( isset( $promo['support'] ) ): ?>
-						<div><a href="<?php echo esc_url( $promo['support'] ); ?>" target="_blank"><?php _e( 'Support', 'ps-plugin-template' ); ?></a></div>
+						<div><a href="<?php echo esc_url( $promo['support'] ); ?>" target="_blank"><?php _e( 'Support', 'widget-for-zendesk-chat-via-api' ); ?></a></div>
 					<?php endif; ?>
 				</div>
 				<div class="ps-wfzcva-other-plugin-image"><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><img src="<?php echo esc_url( $promo['image'] ); ?>" /></a></div>
