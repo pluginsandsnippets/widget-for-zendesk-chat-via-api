@@ -38,6 +38,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 					$this,
 					'notice_review' 
 				) );
+				
 				add_action( 'admin_footer', array(
 					$this,
 					'notice_review_script' 
@@ -48,21 +49,31 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				$this,
 				'add_action_links' 
 			), 10, 2 );
+
 			add_action( 'admin_footer', array(
 				$this,
 				'add_deactive_modal' 
 			) );
+
 			add_action( 'wp_ajax_ps_widget_for_zendesk_chat_via_api_deactivation', array(
 				$this,
 				'handle_deactivation_response' 
 			) );
+
 			add_action( 'plugin_action_links', array(
 				$this,
 				'action_links' 
 			), 10, 2 );
 
-			add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_handle_subscription_request' , array( $this, 'process_subscription' ) );
-			add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_subscription_popup_shown' , array( $this, 'subscription_shown' ) );
+			add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_handle_subscription_request', array(
+				$this,
+				'process_subscription'
+			) );
+
+			add_action( 'wp_ajax_widget_for_zendesk_chat_via_api_subscription_popup_shown', array(
+				$this,
+				'subscription_shown'
+			) );
 		}
 
 		public function create_options_menu() {
