@@ -38,7 +38,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 					$this,
 					'notice_review' 
 				) );
-				
+
 				add_action( 'admin_footer', array(
 					$this,
 					'notice_review_script' 
@@ -92,8 +92,8 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				update_option( 'ps_zendesk_chat_widget_api_delay_time', sanitize_text_field( intval( $_POST['ps_zendesk_chat_widget_api_delay_time'] ) ), false );
 			}
 
-			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/promos-configuration.php';
-			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings.php';
+			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos-configuration.php';
+			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/settings.php';
 		}
 
 		/**
@@ -168,7 +168,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				return;
 			}
 
-			include PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/deactivation-form.php';
+			include PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/deactivation-form.php';
 		}
 		
 		/**

@@ -18,7 +18,7 @@ $delay_time = $this->main_instance->get_api_delay_time();
 
 <h1><?php __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ); ?></h1>
 
-<?php require PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/subscription-callout.php'; ?>
+<?php require PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/subscription-callout.php'; ?>
 
 <form method="POST">
 	<p>

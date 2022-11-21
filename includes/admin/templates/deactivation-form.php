@@ -22,7 +22,7 @@ $ps_widget_for_zendesk_chat_via_api_deactivation_nonce = wp_create_nonce( 'ps_wi
 			</div>
 			<div class="ps-wfzcva-popup-body">
 				<h3><?php _e( 'If you have a moment, please let us know why you are deactivating:', 'widget-for-zendesk-chat-via-api' ); ?></h3>
-				<input type="hidden" class="ps_widget_for_zendesk_chat_via_api_deactivation_nonce" name="ps_widget_for_zendesk_chat_via_api_deactivation_nonce" value="<?php echo esc_attr($ps_widget_for_zendesk_chat_via_api_deactivation_nonce); ?>">
+				<input type="hidden" class="ps_widget_for_zendesk_chat_via_api_deactivation_nonce" name="ps_widget_for_zendesk_chat_via_api_deactivation_nonce" value="<?php echo esc_attr( $ps_widget_for_zendesk_chat_via_api_deactivation_nonce ); ?>">
 				<ul id="ps-wfzcva-reason-list">
 					<li class="ps-wfzcva-reason" data-input-type="" data-input-placeholder="">
 						<label>
