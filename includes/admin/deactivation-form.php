@@ -94,7 +94,7 @@ $ps_widget_for_zendesk_chat_via_api_deactivation_nonce = wp_create_nonce( 'ps_wi
 			<div class="ps-wfzcva-popup-footer">
 				<label class="ps-wfzcva-anonymous"><input type="checkbox" /><?php _e( 'Anonymous feedback', 'widget-for-zendesk-chat-via-api' ); ?></label>
 				<input type="button" class="button button-secondary button-skip ps-wfzcva-popup-skip-feedback" value="<?php _e( 'Skip & Deactivate', 'widget-for-zendesk-chat-via-api'); ?>" />
-				<div class="action-btns">
+				<div class="ps-wfzcva-action-btns">
 					<span class="ps-wfzcva-spinner"><img src="<?php echo admin_url( '/images/spinner.gif' ); ?>" alt=""></span>
 					<input type="submit" class="button button-secondary button-deactivate ps-wfzcva-popup-allow-deactivate" value="<?php _e( 'Submit & Deactivate', 'widget-for-zendesk-chat-via-api'); ?>" disabled="disabled" />
 					<a href="#" class="button button-primary ps-wfzcva-popup-button-close"><?php _e( 'Cancel', 'widget-for-zendesk-chat-via-api' ); ?></a>
