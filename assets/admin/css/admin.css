@@ -263,10 +263,10 @@
 	border: 2px solid #000;
 	border-radius: 50%;
 	border-right-color: transparent;
-	animation: ajaxing 1s infinite linear;
+	animation: ps_wfzcva_ajaxing 1s infinite linear;
 }
 
-@keyframes ajaxing {
+@keyframes ps_wfzcva_ajaxing {
 	to {
 		transform: rotate(360deg);
 	}
