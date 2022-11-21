@@ -1,68 +1,68 @@
-(function($) {
+( function( $ ) {
 	
-	$(function() {
+	$( function() {
 		var pluginSlug = 'widget-for-zendesk-chat-via-api';
 		// Code to fire when the DOM is ready.
-		$(document).on('click', 'tr[data-slug="' + pluginSlug + '"] .deactivate', function(e) {
+		$( document ).on( 'click', 'tr[data-slug="' + pluginSlug + '"] .deactivate', function( e ) {
 			e.preventDefault();
-			$('.ps-wfzcva-popup-overlay').addClass('ps-wfzcva-active');
-			$('body').addClass('ps-wfzcva-hidden');
-		});
+			$( '.ps-wfzcva-popup-overlay' ).addClass( 'ps-wfzcva-active' );
+			$( 'body' ).addClass( 'ps-wfzcva-hidden' );
+		} );
 
-		$(document).on('click', '.ps-wfzcva-popup-button-close', function() {
+		$( document ).on( 'click', '.ps-wfzcva-popup-button-close', function() {
 			close_popup();
-		});
+		} );
 
-		$(document).on('click', ".ps-wfzcva-serveypanel,tr[data-slug='" + pluginSlug + "'] .deactivate", function(e) {
+		$( document ).on( 'click', ".ps-wfzcva-serveypanel,tr[data-slug='" + pluginSlug + "'] .deactivate", function( e ) {
 			e.stopPropagation();
-		});
+		} );
 
-		$(document).click(function() {
+		$( document ).click(function() {
 			close_popup();
-		});
+		} );
 
-		$('.ps-wfzcva-reason label').on('click', function() {
-			if ($(this).find('input[type="radio"]').is(':checked')) {
-				//$('.ps-wfzcva-anonymous').show();
-				$(this).next().next('.ps-wfzcva-reason-input').show().end().end().parent().siblings().find('.ps-wfzcva-reason-input').hide();
+		$( '.ps-wfzcva-reason label' ).on( 'click', function() {
+			if ( $( this ).find( 'input[type="radio"]' ).is( ':checked' ) ) { 
+				//$( '.ps-wfzcva-anonymous' ).show();
+				$( this ).next().next( '.ps-wfzcva-reason-input' ).show().end().end().parent().siblings().find( '.ps-wfzcva-reason-input' ).hide();
+			 }
+		} );
+
+		$( 'input[type="radio"][name="ps-wfzcva-selected-reason"]' ).on( 'click', function(event) {
+			$( '.ps-wfzcva-popup-allow-deactivate' ).removeAttr( 'disabled' );
+			$( '.ps-wfzcva-popup-skip-feedback' ).removeAttr( 'disabled' );
+			$( '.message.error-message' ).hide();
+			$( '.ps-wfzcva-pro-message' ).hide();
+		} );
+
+		$( '.ps-wfzcva-reason-pro label' ).on( 'click', function() {
+			if ( $( this ).find( 'input[type="radio"]' ).is( ':checked' ) ) {
+				$( this ).next( '.ps-wfzcva-pro-message' ).show().end().end().parent().siblings().find( '.ps-wfzcva-reason-input' ).hide();
+				$( this ).next( '.ps-wfzcva-pro-message' ).show()
+				$( '.ps-wfzcva-popup-allow-deactivate' ).attr( 'disabled', 'disabled' );
+				$( '.ps-wfzcva-popup-skip-feedback' ).attr( 'disabled', 'disabled' );
 			}
-		});
+		} );
 
-		$('input[type="radio"][name="ps-wfzcva-selected-reason"]').on('click', function(event) {
-			$(".ps-wfzcva-popup-allow-deactivate").removeAttr('disabled');
-			$(".ps-wfzcva-popup-skip-feedback").removeAttr('disabled');
-			$('.message.error-message').hide();
-			$('.ps-wfzcva-pro-message').hide();
-		});
-
-		$('.ps-wfzcva-reason-pro label').on('click', function() {
-			if ($(this).find('input[type="radio"]').is(':checked')) {
-				$(this).next('.ps-wfzcva-pro-message').show().end().end().parent().siblings().find('.ps-wfzcva-reason-input').hide();
-				$(this).next('.ps-wfzcva-pro-message').show()
-				$('.ps-wfzcva-popup-allow-deactivate').attr('disabled', 'disabled');
-				$('.ps-wfzcva-popup-skip-feedback').attr('disabled', 'disabled');
-			}
-		});
-
-		$(document).on('submit', '#ps-wfzcva-deactivate-form', function(event) {
+		$( document ).on( 'submit', '#ps-wfzcva-deactivate-form', function( event ) {
 			event.preventDefault();
 			
-			var _reason = $('input[type="radio"][name="ps-wfzcva-selected-reason"]:checked').val();
+			var _reason = $( 'input[type="radio"][name="ps-wfzcva-selected-reason"]:checked' ).val();
 			var _reason_details = '';
-			var deactivate_nonce = $('.ps_widget_for_zendesk_chat_via_api_deactivation_nonce').val();
+			var deactivate_nonce = $( '.ps_widget_for_zendesk_chat_via_api_deactivation_nonce' ).val();
 			
-			if (_reason == 2) {
-				_reason_details = $(this).find("input[type='text'][name='better_plugin']").val();
-			} else if (_reason == 7) {
-				_reason_details = $(this).find("input[type='text'][name='other_reason']").val();
+			if ( _reason == 2 ) {
+				_reason_details = $( this ).find("input[type='text'][name='better_plugin']").val();
+			} else if ( _reason == 7 ) {
+				_reason_details = $( this ).find("input[type='text'][name='other_reason']").val();
 			}
 			
-			if ((_reason == 7 || _reason == 2) && _reason_details == '') {
-				$('.message.error-message').show();
+			if ( ( _reason == 7 || _reason == 2 ) && _reason_details == '' ) {
+				$( '.message.error-message' ).show();
 				return;
 			}
 			
-			$.ajax({
+			$.ajax( {
 				url: ajaxurl,
 				type: 'POST',
 				data: {
@@ -72,43 +72,43 @@
 					ps_widget_for_zendesk_chat_via_api_deactivation_nonce: deactivate_nonce
 				},
 				beforeSend: function() {
-					$(".ps-wfzcva-spinner").show();
-					$(".ps-wfzcva-popup-allow-deactivate").attr("disabled", "disabled");
+					$( '.ps-wfzcva-spinner' ).show();
+					$( '.ps-wfzcva-popup-allow-deactivate' ).attr( 'disabled', 'disabled' );
 				}
-			}).done(function() {
-				$(".ps-wfzcva-spinner").hide();
-				$(".ps-wfzcva-popup-allow-deactivate").removeAttr("disabled");
-				window.location.href = $("tr[data-slug='" + pluginSlug + "'] .deactivate a").attr('href');
-			});
+			} ).done( function() {
+				$( '.ps-wfzcva-spinner' ).hide();
+				$( '.ps-wfzcva-popup-allow-deactivate' ).removeAttr( 'disabled' );
+				window.location.href = $( 'tr[data-slug='" + pluginSlug + "'] .deactivate a' ).attr( 'href' );
+			} );
 
-		});
+		} );
 		
-		$('.ps-wfzcva-popup-skip-feedback').on('click', function(e) {
+		$( '.ps-wfzcva-popup-skip-feedback' ).on( 'click', function( e ) {
 			// e.preventDefault();
-			window.location.href = $("tr[data-slug='" + pluginSlug + "'] .deactivate a").attr('href');
+			window.location.href = $( 'tr[data-slug='" + pluginSlug + "'] .deactivate a' ).attr( 'href' );
 		})
 
 		function close_popup() {
-			$('.ps-wfzcva-popup-overlay').removeClass('ps-wfzcva-active');
-			$('#ps-wfzcva-deactivate-form').trigger("reset");
-			$(".ps-wfzcva-popup-allow-deactivate").attr('disabled', 'disabled');
-			$(".ps-wfzcva-reason-input").hide();
-			$('body').removeClass('ps-wfzcva-hidden');
-			$('.message.error-message').hide();
-			$('.ps-wfzcva-pro-message').hide();
+			$( '.ps-wfzcva-popup-overlay' ).removeClass( 'ps-wfzcva-active' );
+			$( '#ps-wfzcva-deactivate-form' ).trigger( 'reset' );
+			$( '.ps-wfzcva-popup-allow-deactivate' ).attr( 'disabled', 'disabled' );
+			$( '.ps-wfzcva-reason-input' ).hide();
+			$( 'body' ).removeClass( 'ps-wfzcva-hidden' );
+			$( '.message.error-message' ).hide();
+			$( '.ps-wfzcva-pro-message' ).hide();
 		}
 		
 		// Overtake the form submission request
 		$( '.ps-wfzcva-subscription-form' ).on( 'submit', function( e ) {
 			e.preventDefault();
 			
-			if ( $( '.ps-wfzcva-subscription-callout' ).hasClass( 'ajaxing' ) ) {
+			if ( $( '.ps-wfzcva-subscription-callout' ).hasClass( 'ps-wfzcva-ajaxing' ) ) {
 				return; // request is already in progress
 			}
 
-			$( '.ps-wfzcva-subscription-callout' ).addClass( 'ajaxing' );
+			$( '.ps-wfzcva-subscription-callout' ).addClass( 'ps-wfzcva-ajaxing' );
 
-			$.ajax({
+			$.ajax( {
 				url: ajaxurl,
 				type: 'POST',
 				dataType: 'JSON',
@@ -121,12 +121,12 @@
 					$( '.ps-wfzcva-subscription-callout-main' ).hide();
 					$( '.ps-wfzcva-subscription-callout-thanks' ).show();
 				}
-			})
+			} )
 			.fail( function() {
 				$( '.ps-wfzcva-subscription-error' ).show();
 			} )
 			.always( function() {
-				$( '.ps-wfzcva-subscription-callout' ).removeClass( 'ajaxing' );
+				$( '.ps-wfzcva-subscription-callout' ).removeClass( 'ps-wfzcva-ajaxing' );
 			} );
 		} );
 
@@ -148,5 +148,5 @@
 			store_popup_shown_status();
 		} );
 
-	});
-})(jQuery);
+	}  );
+} )( jQuery );
