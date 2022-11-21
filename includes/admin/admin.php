@@ -94,8 +94,8 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		}
 
 		public function load_admin_css() {
-			wp_enqueue_script( 'ps-wfzcva-admin-js', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/js/admin.js' );
-			wp_enqueue_style( 'ps-wfzcva-admin-css', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/css/admin.css', array(), PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER, 'all' );
+			wp_enqueue_script( 'ps-wfzcva-admin-js', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/js/admin.min.js' );
+			wp_enqueue_style( 'ps-wfzcva-admin-css', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/css/admin.min.css', array(), PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER, 'all' );
 		}
 
 		/**
