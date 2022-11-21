@@ -17,11 +17,11 @@
 
 // Exit if accessed directly
 
-if (!defined('ABSPATH')) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
+if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 	class PS_Zendesk_Chat_Widget_Via_Api {
 		
 		public function __construct() {
@@ -41,7 +41,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 				'init_zendesk_chat_widget' 
 			) );
 
-			if ( !get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) ) {
+			if ( ! get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) ) {
 				$review_time = time() + 7 * DAY_IN_SECONDS;
 				add_option( 'ps_widget_for_zendesk_chat_via_api_review_time', $review_time, '', false );
 			}
@@ -92,7 +92,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			echo 'var zopim_loaded = false;
 				jQuery(window).on(\'scroll\', function() {
 					window.setTimeout(function() {
-						if( ! zopim_loaded ) {
+						if ( ! zopim_loaded ) {
 							load_zopim();
 							call_zopim();
 							zopim_loaded = true;
@@ -102,7 +102,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 
 				jQuery(window).on(\'load\', function() {
 					window.setTimeout(function() {
-						if( ! zopim_loaded ) {
+						if ( ! zopim_loaded ) {
 							load_zopim();
 							call_zopim();
 							zopim_loaded = true;
@@ -117,7 +117,7 @@ if ( !class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			$delay_time = intval( get_option( 'ps_zendesk_chat_widget_api_delay_time' ) );
 
 			// delay time is forced to be at least 10 seconds
-			if( empty( $delay_time ) || $delay_time < 10 ) {
+			if ( empty( $delay_time ) || $delay_time < 10 ) {
 				$delay_time = 10;
 			}
 

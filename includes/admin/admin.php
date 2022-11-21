@@ -106,7 +106,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 			wp_get_current_user();
 			$user_n = '';
 			
-			if ( !empty( $current_user->display_name ) ) {
+			if ( ! empty( $current_user->display_name ) ) {
 				$user_n = " " . $current_user->display_name;
 			}
 			
@@ -169,7 +169,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 
 			wp_verify_nonce( $_REQUEST['ps_widget_for_zendesk_chat_via_api_deactivation_nonce'], 'ps_widget_for_zendesk_chat_via_api_deactivation_nonce' );
 			
-			if ( !current_user_can( 'manage_options' ) ) {
+			if ( ! current_user_can( 'manage_options' ) ) {
 				wp_die();
 			}
 			
