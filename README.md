@@ -26,7 +26,7 @@ This process follows two criteria:
 - The Settings of the Plugin allow you to increase the 10 second delay further if needed
 
 
-This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings, where you can enter your Zendesk Chat API Code.
+This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings, where you can enter your Zendesk Chat Account Key.
 
 
 

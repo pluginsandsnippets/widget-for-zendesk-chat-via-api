@@ -32,14 +32,14 @@ $delay_time = $this->main_instance->get_api_delay_time();
 
 	<div class="ps-wfzcva-field">
 		<label for="ps-wfzcva-code">
-			<?php echo __( 'Zendesk Chat API Code', 'widget-for-zendesk-chat-via-api' ); ?>
+			<?php echo __( 'Zendesk Chat Account Key', 'widget-for-zendesk-chat-via-api' ); ?>
 		</label>
 		<input type="hidden" name="ps_zendesk_chat_widget_api_code_nonce" value="<?php echo esc_attr( wp_create_nonce( 'ps_zendesk_chat_widget_api_code_nonce' ) ) ?>" />
 		<input type="text" name="ps_zendesk_chat_widget_api_code" value="<?php echo esc_attr( $code ) ?>" />
 	</div>
 	<div class="ps-wfzcva-field">
 		<label for="ps-wfzcva-delay-time">
-			<?php echo __( 'Zendesk Chat API Delay Time', 'widget-for-zendesk-chat-via-api' ); ?>
+			<?php echo __( 'Zendesk Chat Widget Loading Delay Time', 'widget-for-zendesk-chat-via-api' ); ?>
 		</label>
 		<input type="number" min="10" name="ps_zendesk_chat_widget_api_delay_time" value="<?php echo esc_attr( $delay_time ) ?>" />
 		<p><?php _e( 'This is the duration (in seconds) which the plugin will wait before loading the chat widget', 'widget-for-zendesk-chat-via-api' ); ?></p>
