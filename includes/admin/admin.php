@@ -190,7 +190,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				wp_die();
 			}
 			
-			$reason_info = intval( sanitize_text_field( wp_unslash( $_POST['reason_detail'] ) ) );
+			$reason_info = sanitize_text_field( wp_unslash( $_POST['reason_detail'] ) );
 			
 			if ( 1 === $reason_id ) {
 				$reason_text = __( 'I only needed the plugin for a short period', 'widget-for-zendesk-chat-via-api' );
