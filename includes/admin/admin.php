@@ -33,7 +33,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				) );
 			}
 
-			if ( is_admin() && get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) && get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) < time() && !get_option( 'ps_widget_for_zendesk_chat_via_api_dismiss_review_notice' ) ) {
+			if ( is_admin() && get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) && get_option( 'ps_widget_for_zendesk_chat_via_api_review_time' ) < time() && ! get_option( 'ps_widget_for_zendesk_chat_via_api_dismiss_review_notice' ) ) {
 				add_action( 'admin_notices', array(
 					$this,
 					'notice_review' 
@@ -42,7 +42,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				add_action( 'admin_footer', array(
 					$this,
 					'notice_review_script' 
-				) );
+				), 5 );
 			}
 
 			add_action( 'plugin_row_meta', array(
@@ -92,7 +92,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				update_option( 'ps_zendesk_chat_widget_api_delay_time', sanitize_text_field( intval( $_POST['ps_zendesk_chat_widget_api_delay_time'] ) ), false );
 			}
 
-			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos-configuration.php';
+			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos.php';
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/settings.php';
 		}
 
@@ -128,7 +128,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		 * Loads the inline script to dismiss the review notice.
 		 */
 		public function notice_review_script() {
-			echo "<script>\n" . "jQuery(document).on('click', '#ps-wfzcva-review .notice-dismiss', function() {\n" . "\tvar ps_widget_for_zendesk_chat_via_api_review_data = {\n" . "\t\taction: 'ps_widget_for_zendesk_chat_via_api_review_notice',\n" . "\t};\n" . "\tjQuery.post(ajaxurl, ps_widget_for_zendesk_chat_via_api_review_data, function(response) {\n" . "\t\tif (response) {\n" . "\t\t\tconsole.log(response);\n" . "\t\t}\n" . "\t});\n" . "});\n" . "</script>\n";
+			wp_enqueue_script( 'ps-wfzcva-review', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/js/review.min.js' );
 		}
 		
 		/**
@@ -168,7 +168,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				return;
 			}
 
-			include PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/deactivation-form.php';
+			include PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/deactivation.php';
 		}
 		
 		/**
@@ -190,22 +190,22 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				wp_die();
 			}
 			
-			$reason_info = sanitize_text_field( wp_unslash( $_POST['reason_detail'] ) );
+			$reason_info = intval( sanitize_text_field( wp_unslash( $_POST['reason_detail'] ) ) );
 			
 			if ( 1 === $reason_id ) {
-				$reason_text = 'I only needed the plugin for a short period';
+				$reason_text = __( 'I only needed the plugin for a short period', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 2 === $reason_id ) {
-				$reason_text = 'I found a better plugin';
+				$reason_text = __( 'I found a better plugin', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 3 === $reason_id ) {
-				$reason_text = 'The plugin broke my site';
+				$reason_text = __( 'The plugin broke my site', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 4 === $reason_id ) {
-				$reason_text = 'The plugin suddenly stopped working';
+				$reason_text = __( 'The plugin suddenly stopped working', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 5 === $reason_id ) {
-				$reason_text = 'I no longer need the plugin';
+				$reason_text = __( 'I no longer need the plugin', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 6 === $reason_id ) {
-				$reason_text = 'It\'s a temporary deactivation. I\'m just debugging an issue.';
+				$reason_text = __( 'It\'s a temporary deactivation. I\'m just debugging an issue.', 'widget-for-zendesk-chat-via-api' );
 			} elseif ( 7 === $reason_id ) {
-				$reason_text = 'Other';
+				$reason_text = __( 'Other', 'widget-for-zendesk-chat-via-api' );
 			}
 			
 			$cuurent_user = wp_get_current_user();
@@ -260,7 +260,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				$this_plugin = 'widget-for-zendesk-chat-via-api/widget-for-zendesk-chat-via-api.php';
 			}
 			
-			if ( $file == $this_plugin ) {
+			if ( $file === $this_plugin ) {
 				$settings_link = sprintf( esc_html__( '%1$s Settings %2$s', 'widget-for-zendesk-chat-via-api' ), '<a href="' . admin_url( 'options-general.php?page=widget-for-zendesk-chat-via-api' ) . '">', '</a>' );
 				
 				array_unshift( $links, $settings_link );

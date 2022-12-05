@@ -8,7 +8,7 @@
  * Author URI:        https://www.pluginsandsnippets.com
  * Text Domain:       widget-for-zendesk-chat-via-api
  * Requires at least: 3.5
- * Tested up to:      5.9.2
+ * Tested up to:      6.1.1
  *
  * @author            PluginsandSnippets.com
  * @copyright         All rights reserved Copyright (c) 2022, PluginsandSnippets.com

@@ -18,7 +18,7 @@ $delay_time = $this->main_instance->get_api_delay_time();
 
 <h1><?php __( 'Zendesk Chat Settings', 'widget-for-zendesk-chat-via-api' ); ?></h1>
 
-<?php require PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/subscription-callout.php'; ?>
+<?php require PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/templates/subscription.php'; ?>
 
 <form method="POST">
 	<p>
@@ -34,14 +34,14 @@ $delay_time = $this->main_instance->get_api_delay_time();
 		<label for="ps-wfzcva-code">
 			<?php echo __( 'Zendesk Chat Account Key', 'widget-for-zendesk-chat-via-api' ); ?>
 		</label>
-		<input type="hidden" name="ps_zendesk_chat_widget_api_code_nonce" value="<?php echo esc_attr( wp_create_nonce( 'ps_zendesk_chat_widget_api_code_nonce' ) ) ?>" />
-		<input type="text" name="ps_zendesk_chat_widget_api_code" value="<?php echo esc_attr( $code ) ?>" />
+		<input type="hidden" name="ps_zendesk_chat_widget_api_code_nonce" value="<?php echo esc_attr( wp_create_nonce( 'ps_zendesk_chat_widget_api_code_nonce' ) ); ?>" />
+		<input type="text" name="ps_zendesk_chat_widget_api_code" value="<?php echo esc_attr( $code ); ?>" />
 	</div>
 	<div class="ps-wfzcva-field">
 		<label for="ps-wfzcva-delay-time">
 			<?php echo __( 'Zendesk Chat Widget Loading Delay Time', 'widget-for-zendesk-chat-via-api' ); ?>
 		</label>
-		<input type="number" min="10" name="ps_zendesk_chat_widget_api_delay_time" value="<?php echo esc_attr( $delay_time ) ?>" />
+		<input type="number" min="10" name="ps_zendesk_chat_widget_api_delay_time" value="<?php echo esc_attr( $delay_time ); ?>" />
 		<p><?php _e( 'This is the duration (in seconds) which the plugin will wait before loading the chat widget', 'widget-for-zendesk-chat-via-api' ); ?></p>
 	</div>
 	<div class="ps-wfzcva-submit">
