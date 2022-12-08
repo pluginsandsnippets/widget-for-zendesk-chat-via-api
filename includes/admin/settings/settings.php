@@ -70,7 +70,7 @@ $delay_time = $this->main_instance->get_api_delay_time();
 				<div class="ps-wfzcva-other-plugin-image"><a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><img src="<?php echo esc_url( $promo['image'] ); ?>" /></a></div>
 				<div class="ps-wfzcva-other-plugin-desc">
 					<?php if ( $promo['initial_link'] ) : ?>
-					<a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a> 
+						<a href="<?php echo esc_url( $promo['url'] ); ?>" target="_blank"><?php echo $promo['title']; ?></a> 
 					<?php endif; ?>
 
 					<?php echo $promo['description']; ?>

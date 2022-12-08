@@ -13,7 +13,7 @@
 			close_popup();
 		} );
 
-		$( document ).on( 'click', ".ps-wfzcva-serveypanel,tr[data-slug='" + pluginSlug + "'] .deactivate", function( e ) {
+		$( document ).on( 'click', '.ps-wfzcva-serveypanel,tr[data-slug="' + pluginSlug + '"] .deactivate', function( e ) {
 			e.stopPropagation();
 		} );
 
@@ -23,7 +23,6 @@
 
 		$( '.ps-wfzcva-reason label' ).on( 'click', function() {
 			if ( $( this ).find( 'input[type="radio"]' ).is( ':checked' ) ) { 
-				//$( '.ps-wfzcva-anonymous' ).show();
 				$( this ).next().next( '.ps-wfzcva-reason-input' ).show().end().end().parent().siblings().find( '.ps-wfzcva-reason-input' ).hide();
 			 }
 		} );
@@ -84,9 +83,8 @@
 		} );
 		
 		$( '.ps-wfzcva-popup-skip-feedback' ).on( 'click', function( e ) {
-			// e.preventDefault();
 			window.location.href = $( 'tr[data-slug="' + pluginSlug + '"] .deactivate a' ).attr( 'href' );
-		})
+		} );
 
 		function close_popup() {
 			$( '.ps-wfzcva-popup-overlay' ).removeClass( 'ps-wfzcva-active' );

@@ -117,7 +117,7 @@
 	font-size: 15px;
 	color: #495157;
 	line-height: 1.4;
-	text-tranform: uppercase;
+	text-transform: uppercase;
 }
 
 .ps-wfzcva-reason {
@@ -234,6 +234,8 @@
 .ps-wfzcva-subscription-callout-main .ps-wfzcva-subscription-form input {
 	width: 100%;
 	max-width: 350px;
+	margin-bottom: 0;
+	height: 30px;
 }
 
 .ps-wfzcva-subscription-callout.ps-wfzcva-ajaxing {
