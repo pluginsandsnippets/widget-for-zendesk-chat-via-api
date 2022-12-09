@@ -11,8 +11,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$code       = $this->main_instance->get_api_code();
-$delay_time = $this->main_instance->get_api_delay_time();
+$code        = $this->main_instance->get_api_code();
+$delay_time  = $this->main_instance->get_api_delay_time();
+$remove_data = $this->main_instance->get_uninstall_setting();
 
 ?>
 
@@ -43,6 +44,13 @@ $delay_time = $this->main_instance->get_api_delay_time();
 		</label>
 		<input type="number" min="10" name="ps_zendesk_chat_widget_api_delay_time" value="<?php echo esc_attr( $delay_time ); ?>" />
 		<p><?php _e( 'This is the duration (in seconds) which the plugin will wait before loading the chat widget', 'widget-for-zendesk-chat-via-api' ); ?></p>
+	</div>
+	<div class="ps-wfzcva-field">
+		<label for="ps-wfzcva-remove-data">
+			<input type="checkbox" id="ps-wfzcva-remove-data" name="ps_zendesk_chat_widget_api_remove_data" value="1" <?php checked( $remove_data, '1' ); ?> />
+			<span><?php echo __( 'Remove Plugin Data on Uninstall', 'widget-for-zendesk-chat-via-api' ); ?></span>
+		</label>
+		<p><?php _e( 'If checked then on plugin uninstallation plugin data will be removed from database.', 'widget-for-zendesk-chat-via-api' ); ?></p>
 	</div>
 	<div class="ps-wfzcva-submit">
 		<button type="submit" class="button-primary">

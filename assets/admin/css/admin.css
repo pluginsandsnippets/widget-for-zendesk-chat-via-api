@@ -146,7 +146,7 @@
 	margin: 0 0 10px;
 }
 
-.ps-wfzcva-field input {
+.ps-wfzcva-field input:not([type="checkbox"]) {
 	width: 100%;
 }
 

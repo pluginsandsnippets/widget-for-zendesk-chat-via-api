@@ -90,6 +90,9 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				update_option( 'ps_zendesk_chat_widget_api_code', sanitize_text_field( wp_unslash( $_POST['ps_zendesk_chat_widget_api_code'] ) ), false );
 				
 				update_option( 'ps_zendesk_chat_widget_api_delay_time', sanitize_text_field( intval( $_POST['ps_zendesk_chat_widget_api_delay_time'] ) ), false );
+				
+				$remove_data = ( isset( $_POST['ps_zendesk_chat_widget_api_remove_data'] ) ? intval( $_POST['ps_zendesk_chat_widget_api_remove_data'] ) : 0 );
+				update_option( 'ps_zendesk_chat_widget_api_remove_data', $remove_data, false );
 			}
 
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos.php';
