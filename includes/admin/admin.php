@@ -13,6 +13,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		public function __construct( $instance ) {
 			$this->main_instance = $instance;
 			$this->hooks();
+			$this->check_empty_code();
 		}
 
 		public function hooks() {
@@ -110,6 +111,38 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		public function load_admin_css() {
 			wp_enqueue_script( 'ps-wfzcva-admin-js', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/js/admin.min.js' );
 			wp_enqueue_style( 'ps-wfzcva-admin-css', PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_PLUGIN_URL . 'assets/admin/css/admin.min.css', array(), PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_VER, 'all' );
+		}
+
+		/**
+		 * Check if API Code is empty.
+		 */
+		public function check_empty_code() {
+
+			// If user is on settings page then don't show the notice.
+			if ( isset( $_GET['page'] ) && 'widget-for-zendesk-chat-via-api' === $_GET['page'] ) {
+				return;
+			}
+
+			$code = $this->main_instance->get_api_code();
+
+			if ( empty( $code ) ) {
+				add_action( 'admin_notices', array( $this, 'show_empty_code_message' ) );
+			}
+		}
+
+		/**
+		 * Shows a notice in admin panel for filling in the Chat Account Key.
+		 */
+		public function show_empty_code_message() {
+			echo '<div class="notice notice-error">';
+				echo '<p>';
+					esc_html_e( 'You have not provided Zendesk Chat Account Key, the plugin will not work until it is added.', 'widget-for-zendesk-chat-via-api' );
+
+					echo ' <a class="button" href="' . admin_url( 'options-general.php?page=widget-for-zendesk-chat-via-api' ) . '">';
+						esc_html_e( 'Add it Now', 'widget-for-zendesk-chat-via-api' );
+					echo '</a>';
+				echo '</p>';
+			echo '</div>';
 		}
 
 		/**
