@@ -108,7 +108,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		 */
 		public function register_metabox() {
 			$post_types = get_post_types( array(), 'objects' );
-			$skip_posts = apply_filters( 'widget_for_zendesk_chat_via_api_skip_posts', array( 'attachment' ) );
+			$skip_posts = apply_filters( 'ps_zendesk_chat_widget_api_code_skip_posts', array( 'attachment' ) );
 
 			foreach ( $post_types as $post_type ) {
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				}
 
 				add_meta_box(
-					'widget_for_zendesk_via_api_metabox_' . $post_type->name,
+					'ps_zendesk_chat_widget_api_code_metabox_' . $post_type->name,
 					__( 'Widget for Zendesk Chat', 'widget-for-zendesk-chat-via-api' ), // meta box title
 					array( $this, 'metabox' ),
 					$post_type->name, // post type or page. 
@@ -132,10 +132,10 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		 * @param  WP_Post $post The post object.
 		 */
 		public function metabox( $post ) {
-			echo '<input type="checkbox" checked name="_zendesk_chat_widget_disable" value="0" style="display:none;" />';
+			echo '<input type="checkbox" checked name="ps_zendesk_chat_widget_api_code_disable" value="0" style="display:none;" />';
 			echo 
 				'<label>
-					<input type="checkbox" name="_zendesk_chat_widget_disable" value="1" ' . ( 1 === (int) get_post_meta( $post->ID, 'zendesk_chat_widget_disable', true ) ? 'checked' : '' ) . ' />
+					<input type="checkbox" name="ps_zendesk_chat_widget_api_code_disable" value="1" ' . ( 1 === (int) get_post_meta( $post->ID, 'ps_zendesk_chat_widget_api_code_disable', true ) ? 'checked' : '' ) . ' />
 					<span>' . __( 'Disable Zendesk Chat Widget', 'widget-for-zendesk-chat-via-api' ) . '</span>
 				</label>';
 		}
@@ -149,8 +149,8 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				return;
 			}
 
-			if ( isset( $_POST['_zendesk_chat_widget_disable'] ) ) {
-				update_post_meta( $post_id, 'zendesk_chat_widget_disable', intval( $_POST['_zendesk_chat_widget_disable'] ) );
+			if ( isset( $_POST['ps_zendesk_chat_widget_api_code_disable'] ) ) {
+				update_post_meta( $post_id, 'ps_zendesk_chat_widget_api_code_disable', intval( $_POST['ps_zendesk_chat_widget_api_code_disable'] ) );
 			}
 		}
 
