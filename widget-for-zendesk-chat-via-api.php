@@ -69,7 +69,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			}
 			
 			echo '<script>
-					function load_zopim() {
+					function ps_load_zopim() {
 						window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
 						d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
 						_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute(\'charset\',\'utf-8\');
@@ -79,7 +79,7 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 				</script>';
 			
 			echo '<script>';
-			echo 'function call_zopim() {';
+			echo 'function ps_call_zopim() {';
 			
 			if ( is_user_logged_in() ) {
 				$current_user = wp_get_current_user();
@@ -93,23 +93,23 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			echo '}';
 			
 			// Following JS loads and calls widget when one of two criterian is met
-			echo 'var zopim_loaded = false;
+			echo 'var ps_zopim_loaded = false;
 				jQuery(window).on(\'scroll\', function() {
 					window.setTimeout(function() {
-						if ( ! zopim_loaded ) {
-							load_zopim();
-							call_zopim();
-							zopim_loaded = true;
+						if ( ! ps_zopim_loaded ) {
+							ps_load_zopim();
+							ps_call_zopim();
+							ps_zopim_loaded = true;
 						}
 					}, 5000);
 				});
 
 				jQuery(window).on(\'load\', function() {
 					window.setTimeout(function() {
-						if ( ! zopim_loaded ) {
-							load_zopim();
-							call_zopim();
-							zopim_loaded = true;
+						if ( ! ps_zopim_loaded ) {
+							ps_load_zopim();
+							ps_call_zopim();
+							ps_zopim_loaded = true;
 						}
 					}, ' . ( $delay_time * 1000 ) . ');
 				});';
