@@ -75,6 +75,9 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				$this,
 				'subscription_shown'
 			) );
+
+			add_action( 'add_meta_boxes', array( $this, 'register_metabox' ) );
+			add_action( 'save_post', array( $this, 'save_meta_box' ) );
 		}
 
 		public function create_options_menu() {
@@ -98,6 +101,57 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos.php';
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/settings.php';
+		}
+
+		/**
+		 * Register Metaboxes for all public post types.
+		 */
+		public function register_metabox() {
+			$post_types = get_post_types( array(), 'objects' );
+			$skip_posts = apply_filters( 'widget_for_zendesk_chat_via_api_skip_posts', array( 'attachment' ) );
+
+			foreach ( $post_types as $post_type ) {
+
+				if ( ! $post_type->public || in_array( $post_type->name, $skip_posts ) ) {
+					continue;
+				}
+
+				add_meta_box(
+					'widget_for_zendesk_via_api_metabox_' . $post_type->name,
+					__( 'Widget for Zendesk Chat', 'widget-for-zendesk-chat-via-api' ), // meta box title
+					array( $this, 'metabox' ),
+					$post_type->name, // post type or page. 
+					'side', // context, where on the screen
+					'high' // priority, where should this go in the context
+				);
+			}
+		}
+
+		/**
+		 * Add Metabox to Multiple Post Types.
+		 * @param  WP_Post $post The post object.
+		 */
+		public function metabox( $post ) {
+			echo '<input type="checkbox" checked name="_zendesk_chat_widget_disable" value="0" style="display:none;" />';
+			echo 
+				'<label>
+					<input type="checkbox" name="_zendesk_chat_widget_disable" value="1" ' . ( 1 === (int) get_post_meta( $post->ID, 'zendesk_chat_widget_disable', true ) ? 'checked' : '' ) . ' />
+					<span>' . __( 'Disable Zendesk Chat Widget', 'widget-for-zendesk-chat-via-api' ) . '</span>
+				</label>';
+		}
+
+		/**
+		 * Save Custom field on Post Save.
+		 * @param  int $post_id The ID of post being saved.
+		 */
+		public function save_meta_box( $post_id ) {
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return;
+			}
+
+			if ( isset( $_POST['_zendesk_chat_widget_disable'] ) ) {
+				update_post_meta( $post_id, 'zendesk_chat_widget_disable', intval( $_POST['_zendesk_chat_widget_disable'] ) );
+			}
 		}
 
 		/**

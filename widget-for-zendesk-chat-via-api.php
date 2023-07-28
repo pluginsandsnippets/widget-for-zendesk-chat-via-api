@@ -67,6 +67,14 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			if ( empty( $code ) ) {
 				return;
 			}
+
+			// check if user has disabled zendesk widget on this page/post.
+			if (
+				( is_single() || is_singular() ) &&
+				1 === (int) get_post_meta( get_queried_object_id(), 'zendesk_chat_widget_disable', true )
+			) {
+				return;
+			}
 			
 			echo '<script>
 					function ps_load_zopim() {
