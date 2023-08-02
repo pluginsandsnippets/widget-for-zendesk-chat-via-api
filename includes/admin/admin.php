@@ -190,10 +190,10 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 		public function show_empty_code_message() {
 			echo '<div class="notice notice-error">';
 				echo '<p>';
-					esc_html_e( 'You have not provided Zendesk Chat Account Key, the plugin will not work until it is added.', 'widget-for-zendesk-chat-via-api' );
+					esc_html_e( 'Please enter a valid API Key from Zendesk.', 'widget-for-zendesk-chat-via-api' );
 
 					echo ' <a class="button" href="' . admin_url( 'options-general.php?page=widget-for-zendesk-chat-via-api' ) . '">';
-						esc_html_e( 'Add it Now', 'widget-for-zendesk-chat-via-api' );
+						esc_html_e( 'Open Settings', 'widget-for-zendesk-chat-via-api' );
 					echo '</a>';
 				echo '</p>';
 			echo '</div>';
