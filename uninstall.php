@@ -33,6 +33,7 @@ function ps_widget_for_zendesk_chat_via_api_uninstall() {
 	delete_option( 'ps_zendesk_chat_widget_api_remove_data' );
 	delete_option( 'ps_zendesk_chat_widget_api_delay_time' );
 	delete_option( 'ps_widget_for_zendesk_chat_via_api_review_time' );
+	delete_option( 'ps_zendesk_chat_widget_api_code_status' );
 }
 
 // Run the uninstall process

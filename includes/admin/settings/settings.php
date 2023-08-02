@@ -12,6 +12,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $code        = $this->main_instance->get_api_code();
+$code_status = $this->main_instance->get_api_code_status();
 $delay_time  = $this->main_instance->get_api_delay_time();
 $remove_data = $this->main_instance->get_uninstall_setting();
 
@@ -37,6 +38,20 @@ $remove_data = $this->main_instance->get_uninstall_setting();
 		</label>
 		<input type="hidden" name="ps_zendesk_chat_widget_api_code_nonce" value="<?php echo esc_attr( wp_create_nonce( 'ps_zendesk_chat_widget_api_code_nonce' ) ); ?>" />
 		<input type="text" name="ps_zendesk_chat_widget_api_code" value="<?php echo esc_attr( $code ); ?>" />
+
+		<div class="ps-wfzcva-code-message-block <?php echo ( ! empty( $code ) && 'valid' === $code_status ? 'ps-wfzcva-valid' : '' ); ?>">
+			<?php
+				if ( empty( $code ) ) {
+					esc_html_e( 'Please enter a valid API Key from Zendesk.', 'widget-for-zendesk-chat-via-api' );
+				} elseif( 'invalid' === $code_status ) {
+					esc_html_e( 'API Key is invalid. Please enter a valid API Key.', 'widget-for-zendesk-chat-via-api' );
+				} elseif( 'valid' === $code_status ) {
+					esc_html_e( 'API Key is valid.', 'widget-for-zendesk-chat-via-api' );
+				} else {
+					esc_html_e( 'We could not verify the key, it may be correct please check your account.', 'widget-for-zendesk-chat-via-api' );
+				}
+			?>
+		</div>
 	</div>
 	<div class="ps-wfzcva-field">
 		<label for="ps-wfzcva-delay-time">

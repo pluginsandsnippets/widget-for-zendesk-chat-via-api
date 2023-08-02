@@ -273,3 +273,19 @@
 		transform: rotate(360deg);
 	}
 }
+
+.ps-wfzcva-code-message-block {
+	border: 1px solid #cb0009;
+	color: #cb0009;
+	background: #ffd9db;
+	font-weight: 500;
+	padding: 2px 10px;
+	border-radius: 5px;
+	margin: 8px 0;
+}
+
+.ps-wfzcva-code-message-block.ps-wfzcva-valid {
+	border-color: #098f09;
+	color: #098f09;
+	background: #f1fff1;
+}

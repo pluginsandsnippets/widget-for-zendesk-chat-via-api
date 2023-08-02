@@ -56,6 +56,10 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api' ) ) {
 			return get_option( 'ps_zendesk_chat_widget_api_code' );
 		}
 		
+		public function get_api_code_status() {
+			return get_option( 'ps_zendesk_chat_widget_api_code_status' );
+		}
+		
 		public function get_uninstall_setting() {
 			return intval( get_option( 'ps_zendesk_chat_widget_api_remove_data' ) );
 		}

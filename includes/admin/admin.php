@@ -97,6 +97,26 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 				
 				$remove_data = ( isset( $_POST['ps_zendesk_chat_widget_api_remove_data'] ) ? intval( $_POST['ps_zendesk_chat_widget_api_remove_data'] ) : 0 );
 				update_option( 'ps_zendesk_chat_widget_api_remove_data', $remove_data, false );
+
+				$code = $this->main_instance->get_api_code();
+
+				// Validate the code by querying Zendesk zopim_chat.
+				if ( ! empty( $code ) ) {
+					$code_status = 'invalid';
+					$check_code = wp_remote_get( 'https://ekr.zdassets.com/compose/zopim_chat/' . $code );
+
+					if ( ! is_wp_error( $check_code ) ) {
+						$check_code = json_decode( wp_remote_retrieve_body( $check_code ), true );
+
+						if ( $check_code && is_array( $check_code ) ) {
+							$code_status = 'valid';
+						}
+					} else {
+						$code_status = ''; // Unknown Status.
+					}
+
+					update_option( 'ps_zendesk_chat_widget_api_code_status', $code_status );
+				}
 			}
 
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos.php';
