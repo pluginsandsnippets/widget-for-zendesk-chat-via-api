@@ -19,13 +19,13 @@ This plugin offers a better way to load the Zendesk Chat Widget than the Standar
 
 = Why do you need this Plugin? =
 
-One common problem is that the standard Zendesk Chat plugin adds time required to load the widget at the end of each page load. Based on our page load measurements using GTmetrix, loading the Zendesk Chat Widget via the standard Zendesk Plugin adds 103- 691 ms to the time required for loading of a website. Of course the time varies from website to website but the point is, loading Zendesk Chat Widget the standard way, consumes unnecessary time you don’t have. This can lead to quite poor page load metrics which can affect your SEO scores.
+One common problem is that the standard Zendesk Chat plugin adds time required to load the widget at the end of each page load. Based on our page load measurements using GTmetrix, loading the Zendesk Chat Widget via the standard Zendesk Plugin adds 103- 691 ms to the time required for loading of a website. Of course the time varies from website to website but the point is, loading Zendesk Chat Widget the standard way, consumes unnecessary time you don't have. This can lead to quite poor page load metrics which can affect your SEO scores.
 
 = How does it work? =
 
 The Plugin Widget for Zendesk Chat via API uses the API offered by Zendesk to call the chat widget from the background. The plugin then uses a setting to add a chosen time delay when the Chat Widget will be loaded.
 
-This allows that the initial loading of the website can happen without the Zendesk Chat plugin giving a chance to block page load. The Chat plugin is simply loaded separately by waiting first until the initial page has been fully loaded (in GT Metrix Time to Interactive), then loading the Zendesk Chat Widget in a second step via API (e.g. 10 seconds later). Problem solved! No more blocking of page load by Zendesk. Now suddenly, your SEO Metrics start to look much better
+This allows that the initial loading of the website can happen without the Zendesk Chat plugin giving a chance to block page load. The Chat plugin is simply loaded separately by waiting first until the initial page has been fully loaded (in GT Metrix Time to Interactive), then loading the Zendesk Chat Widget in a second step via API (e.g. 10 seconds later). Problem solved! No more blocking of page load by Zendesk. Now suddenly, your SEO Metrics start to look much better!
 
 = API and Time Delay – Simple and Quick to Setup =
 
@@ -33,8 +33,8 @@ The plugin has a Settings Page located on your WordPress Dashboard with the Sett
 
 Here some more information about the two settings needed to make this plugin work correctly:
 
-* **API Key –** simply follow the instructions to get the API Key from your Zendesk Account. Ensure you obtain confirmation that the Key is valid. Once valid, the Zendesk Chat Widget will be loaded via API Key. **No other plugin is needed anymore.**
-* **Loading Delay Time –** Per default, the plugin will delay the loading of the Zendesk Chat Widget by **10 seconds.** For most websites, this should work. If your website is very slow or faster, then you increase/decrease the time delay as you wish.
+* **API Key** – simply follow the instructions to get the API Key from your Zendesk Account. Ensure you obtain confirmation that the Key is valid. Once valid, the Zendesk Chat Widget will be loaded via API Key. **No other plugin is needed anymore.**
+* **Loading Delay Time** – Per default, the plugin will delay the loading of the Zendesk Chat Widget by **10 seconds.** For most websites, this should work. If your website is very slow or faster, then you increase/decrease the time delay as you wish.
 
 Please note the loading delay works as follows:
 
@@ -47,7 +47,7 @@ Please clear all your page caches whenever you update the settings to ensure the
 = Hiding Zendesk Chat Widget on Select Pages =
 Additionally, we have added a meta-box on all page and post types in WordPress that allows you to Disable the Chat Widget on select pages. You can open the target page in the edit modus, locate the Widget for Zendesk Chat, and tick the box to disable the Chat Widget.
 
-We also provide additional plugins to enhance your Easy Digital Downloads (EDD) store. Checkout our other plugins:
+We also provide additional plugins to enhance your WooCommerce and Easy Digital Downloads (EDD) WordPress webstore. Check out our other plugins:
 
 * [UpsellMaster](https://www.pluginsandsnippets.com/downloads/upsellmaster/?utm_source=docs&utm_medium=installation_tab&utm_content=documentation&utm_campaign=readme) automatically calculate suitable Upsell products in 1-click for each product.
 * [EDD Product Versions](https://www.pluginsandsnippets.com/downloads/edd-product-versions/?utm_source=docs&utm_medium=installation_tab&utm_content=documentation&utm_campaign=readme) enables product versioning for all of your products and allows you to (1) generate additional revenues from selling updated download versions (existing customers can even be offered a discount for upgrading their products) as an alternative to selling subscriptions and/or (2) simply add a comprehensive archive of old download versions for easy reference to your customers. Plugin increases the monetization and customer retention of your webshop.
@@ -72,7 +72,7 @@ We also provide additional plugins to enhance your Easy Digital Downloads (EDD) 
 
 == Frequently Asked Questions ==
 
-= I can’t see any difference, is the Plugin working correctly? =
+= I can't see any difference, is the Plugin working correctly? =
 
 First, check the page speed analysis from GTmetrix to find out how much Zendesk Chat Widget (ex Zopim) delays your website's loading (especially within the critical Time to Interactive range). Second, kindly make sure that the API key is correctly entered, and third that all caches are cleared. Then recheck the page speed analysis via GTmetrix. Finetune the time delay so that the loading of the Zendesk Chat Plugin (ex Zopim) does not influence any more Time to Interactive (by delaying the loading of the Widget).
 
@@ -101,7 +101,7 @@ Yes. You can enable the settings on Remove Plugin Data on Uninstall in the Plugi
 
 = Where can I ask for help? =
 
-You may contact our [Support](https://www.pluginsandsnippets.com/contact/?utm_source=docs&utm_medium=faq_tab&utm_content=support&utm_campaign=readme) at anytime.
+You may contact our [Support](https://www.pluginsandsnippets.com/contact/?utm_source=docs&utm_medium=faq_tab&utm_content=support&utm_campaign=readme) at any time.
 
 
 == Changelog ==
