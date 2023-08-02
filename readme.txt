@@ -38,8 +38,8 @@ Here some more information about the two settings needed to make this plugin wor
 
 Please note the loading delay works as follows:
 
-* Webpage is loaded but left still - The Zendesk Chat Widget will wait for a minimum of 10 seconds before loading and opening.
-* Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait 3 seconds before loading and opening.
+* **Webpage is loaded but left still** - The Zendesk Chat Widget will wait for a minimum of 10 seconds before loading and opening.
+* **Webpage is loaded and scrolled upon** - The Zendesk Chat Widget will wait 3 seconds before loading and opening.
 
 = Clear Caching when you Install or Update the Plugin =
 Please clear all your page caches whenever you update the settings to ensure the loading of the Zendesk Chat Widget is executed correctly.
