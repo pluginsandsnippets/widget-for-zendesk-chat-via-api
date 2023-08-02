@@ -15,21 +15,37 @@ This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimiz
 
 == Description ==
 
-**This plugin offers a faster way to load the Zendesk Chat Widget than the standard Zendesk Chat Plugin. Optimizes the page load speed. Quick and easy to implement. Make your website faster loading Zendesk Chat widget this way!**
+This plugin offers a better way to load the Zendesk Chat Widget than the Standard Zendesk Chat Plugin. The plugin loads the Zendesk Chat Widget via API and uses a time delay setting to load the Chat Widget. Using this Trick, the Zendesk Chat Widget is loaded AFTER the website is fully loaded. Therefore the loading of the Chat Widget does not consume valuable time anymore on initial page load. Quick and easy to implement. Improves Page Load Time for SEO!
 
-Once your webpage is called, the Zendesk Chat Widget will be loaded directly via API with a slight time delay. This frees up blocked loading time so that the webpage fully loads first. This greatly enhances the applicable SEO page speed metrics as the standard Zendesk Chat plugin requires too much time to load a website fast.
+= Why do you need this Plugin? =
 
-The time delay is defined as follows:
+One common problem is that the standard Zendesk Chat plugin adds time required to load the widget at the end of each page load. Based on our page load measurements using GTmetrix, loading the Zendesk Chat Widget via the standard Zendesk Plugin adds 103- 691 ms to the time required for loading of a website. Of course the time varies from website to website but the point is, loading Zendesk Chat Widget the standard way, consumes unnecessary time you don’t have. This can lead to quite poor page load metrics which can affect your SEO scores.
 
-* Webpage is loaded but left still - The Zendesk Chat Widget will wait for minimum 10 seconds before loading and opening.
-* Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait for 3 seconds before loading and opening.
-* The Settings of the Plugin allow you to increase the 10 second delay further if needed
+= How does it work? =
 
+The Plugin Widget for Zendesk Chat via API uses the API offered by Zendesk to call the chat widget from the background. The plugin then uses a setting to add a chosen time delay when the Chat Widget will be loaded.
 
+This allows that the initial loading of the website can happen without the Zendesk Chat plugin giving a chance to block page load. The Chat plugin is simply loaded separately by waiting first until the initial page has been fully loaded (in GT Metrix Time to Interactive), then loading the Zendesk Chat Widget in a second step via API (e.g. 10 seconds later). Problem solved! No more blocking of page load by Zendesk. Now suddenly, your SEO Metrics start to look much better
 
-This plugin also provides a Zendesk Chat Settings Page located on your WordPress Dashboard > Settings. Simply follow the instructions to enter your Zendesk Chat API Key and you are done. Quick and easay to implement.
+= API and Time Delay – Simple and Quick to Setup =
 
-**Like this plugin?** Consider leaving a [5 star review](https://wordpress.org/support/plugin/widget-for-zendesk-chat-via-api/reviews/).
+The plugin has a Settings Page located on your WordPress Dashboard with the Settings Menu. Follow the instructions to enter your Zendesk Chat API Key, and you are done. **Quick and easy, a very straightforward plugin to use!**
+
+Here some more information about the two settings needed to make this plugin work correctly:
+
+* **API Key –** simply follow the instructions to get the API Key from your Zendesk Account. Ensure you obtain confirmation that the Key is valid. Once valid, the Zendesk Chat Widget will be loaded via API Key. **No other plugin is needed anymore.**
+* **Loading Delay Time –** Per default, the plugin will delay the loading of the Zendesk Chat Widget by **10 seconds.** For most websites, this should work. If your website is very slow or faster, then you increase/decrease the time delay as you wish.
+
+Please note the loading delay works as follows:
+
+* Webpage is loaded but left still - The Zendesk Chat Widget will wait for a minimum of 10 seconds before loading and opening.
+* Webpage is loaded and scrolled upon - The Zendesk Chat Widget will wait 3 seconds before loading and opening.
+
+= Clear Caching when you Install or Update the Plugin =
+Please clear all your page caches whenever you update the settings to ensure the loading of the Zendesk Chat Widget is executed correctly.
+
+= Hiding Zendesk Chat Widget on Select Pages =
+Additionally, we have added a meta-box on all page and post types in WordPress that allows you to Disable the Chat Widget on select pages. You can open the target page in the edit modus, locate the Widget for Zendesk Chat, and tick the box to disable the Chat Widget.
 
 We also provide additional plugins to enhance your Easy Digital Downloads (EDD) store. Checkout our other plugins:
 
@@ -56,11 +72,32 @@ We also provide additional plugins to enhance your Easy Digital Downloads (EDD) 
 
 == Frequently Asked Questions ==
 
+= I can’t see any difference, is the Plugin working correctly? =
+
+First, check the page speed analysis from GTmetrix to find out how much Zendesk Chat Widget (ex Zopim) delays your website's loading (especially within the critical Time to Interactive range). Second, kindly make sure that the API key is correctly entered, and third that all caches are cleared. Then recheck the page speed analysis via GTmetrix. Finetune the time delay so that the loading of the Zendesk Chat Plugin (ex Zopim) does not influence any more Time to Interactive (by delaying the loading of the Widget).
 
 = Do I still need to install the original plugin from Zendesk? =
 
-No, you only need our plugin installed and activated on your website to use the Zendesk Chat Widget.
+No, you only need this plugin installed and activated on your website to use the Zendesk Chat Widget. Now the Zendesk Chat Widget will be loaded via API and directly displayed on the Frontend of your Website.
 
+= Where can I find my Zendesk Chat Account Key? =
+
+You can find your Account Key by logging in to your Zendesk Chat Dashboard, click on your Profile Icon, and select Check Connection option, and your Account Key will appear on the next window that opens.
+
+= What is the Zendesk Chat Widget Loading Delay Time? =
+This is the duration (in seconds) the plugin will wait before loading the chat widget. This allows for sufficient time to terminate the initial page load. The loading delay time can be adjusted manually in case you want to display the Chat Widget faster or you need to wait later until your website is fully loaded. This allows us to optimize each Website individually.
+
+= Can I set my own Widget Loading Delay Time? =
+
+Yes, depending on your preference, you set your own Chat Widget Loading Delay Time by going to the Plugin Settings Page.
+
+= Can I hide the Zendesk Chat Widget on select pages? =
+
+Yes, as of version 1.12.7, we have added a new feature that allows to disable the Zendesk Chat Widget on select pages or posts. We can do this by going to the page edit modus, locate the Widget for Zendesk Chat, and tick the box to disable.
+
+= Can I remove plugin data on uninstall? =
+
+Yes. You can enable the settings on Remove Plugin Data on Uninstall in the Plugin Settings Page.
 
 = Where can I ask for help? =
 
