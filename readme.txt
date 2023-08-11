@@ -5,9 +5,9 @@ Plugin URI: https://wordpress.org/plugins/widget-for-zendesk-chat-via-api/
 Contributors: pluginsandsnippets, dilipsakariya, siawa, napoleaofw
 Tags: zendesk chat, zendesk, chat, zoopim, zendesk, api, widget, speed, speed optimization, load time,
 Requires at least: 3.5
-Tested up to: 6.2
+Tested up to: 6.3
 Requires PHP: 5.6
-Stable Tag: 1.12.8
+Stable Tag: 1.12.9
 License: GNU Version 2 or Any Later Version
 
 This plugin offers a faster way to load the Zendesk Chat Widget via API. Optimizes the page load speed. Quick and easy to implement.
@@ -105,6 +105,8 @@ You may contact our [Support](https://www.pluginsandsnippets.com/contact/?utm_so
 
 
 == Changelog ==
+= 1.12.9 - August 11, 2023 =
+* Update Tested up to WordPress version
 = 1.12.8 - August 2, 2023 =
 * Add validation for API Key
 = 1.12.7 - July 28, 2023 =
