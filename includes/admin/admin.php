@@ -78,6 +78,8 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 
 			add_action( 'add_meta_boxes', array( $this, 'register_metabox' ) );
 			add_action( 'save_post', array( $this, 'save_meta_box' ) );
+
+			add_filter( 'ps_widget_for_zendesk_chat_via_api_validate_code', array( $this, 'validate_code' ) );
 		}
 
 		public function create_options_menu() {
@@ -102,25 +104,36 @@ if ( ! class_exists( 'PS_Zendesk_Chat_Widget_Via_Api_Admin' ) ) {
 
 				// Validate the code by querying Zendesk zopim_chat.
 				if ( ! empty( $code ) ) {
-					$code_status = 'invalid';
-					$check_code = wp_remote_get( 'https://ekr.zdassets.com/compose/zopim_chat/' . $code );
-
-					if ( ! is_wp_error( $check_code ) ) {
-						$check_code = json_decode( wp_remote_retrieve_body( $check_code ), true );
-
-						if ( $check_code && is_array( $check_code ) ) {
-							$code_status = 'valid';
-						}
-					} else {
-						$code_status = ''; // Unknown Status.
-					}
-
+					$code_status = $this->validate_code( $code );
 					update_option( 'ps_zendesk_chat_widget_api_code_status', $code_status );
 				}
 			}
 
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/promos.php';
 			require_once PS_WIDGET_FOR_ZENDESK_CHAT_VIA_API_DIR . 'includes/admin/settings/settings.php';
+		}
+
+		/**
+		 * Validates the code by quering Zendesk zopim_chat URL.
+		 *
+		 * @param string $code The code to be validated.
+		 * @return string The validated code status.
+		 */
+		public function validate_code( $code ) {
+			$code_status = 'invalid';
+			$check_code  = wp_remote_get( 'https://ekr.zdassets.com/compose/zopim_chat/' . $code );
+
+			if ( ! is_wp_error( $check_code ) ) {
+				$check_code = json_decode( wp_remote_retrieve_body( $check_code ), true );
+
+				if ( $check_code && is_array( $check_code ) ) {
+					$code_status = 'valid';
+				}
+			} else {
+				$code_status = 'unknown'; // Unknown Status.
+			}
+
+			return $code_status;
 		}
 
 		/**
