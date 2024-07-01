@@ -6,6 +6,8 @@
  * Version:           1.12.11
  * Author:            Plugins & Snippets
  * Author URI:        https://www.pluginsandsnippets.com
+ * License:           GPL v2 or later
+ * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       widget-for-zendesk-chat-via-api
  * Requires at least: 3.5
  * Tested up to:      6.5
